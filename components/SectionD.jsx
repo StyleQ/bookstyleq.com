@@ -7,7 +7,6 @@ import Pin from './Pin';
 import Service from './Service';
 import { Grid, Column } from './Grid';
 
-
 const heartRelease = keyframes`
   0%{
     transform: translateY(-3rem) scale(.2);
