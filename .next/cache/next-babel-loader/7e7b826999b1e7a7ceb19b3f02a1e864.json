@@ -1,1 +1,0 @@
-{"ast":null,"code":"import styled from 'styled-components';\nvar Container = styled.div.withConfig({\n  displayName: \"Container\",\n  componentId: \"o4lyum-0\"\n})([\"width:90%;max-width:var(--site-width);margin:auto;\"]);\nexport default Container;","map":null,"metadata":{},"sourceType":"module"}

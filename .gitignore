@@ -2,26 +2,22 @@
 
 # dependencies
 /node_modules
-/jspm_packages
 /.pnp
 .pnp.js
 
 # testing
-.nyc_output
 /coverage
-/lib-cov
 
 # next.js
 /.next/
 /out/
 
 # production
-/.cache
-/.npm
 /build
 
 # misc
 .DS_Store
+*.pem
 
 # debug
 npm-debug.log*
@@ -29,14 +25,11 @@ yarn-debug.log*
 yarn-error.log*
 
 # local env files
-.env*
+.env*.local
 
-# vscode
-*.code-workspace
+# vercel
+.vercel
 
-# Optional eslint cache
-.eslintcache
-
-# REPL history
-.node_repl_history
-.vscode/settings.json
+# typescript
+*.tsbuildinfo
+next-env.d.ts
