@@ -16,7 +16,16 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={cx(openSans.className, "bg-brown-100")}>{children}</body>
+      <head>
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        <link rel="mask-icon" color="#a43f6a" href="/safari-pinned-tab.svg" />
+        <link rel="manifest" crossOrigin="use-credentials" href="/site.webmanifest" />
+        <meta name="msapplication-TileColor" content="a43f6a" />
+        <meta name="theme-color" content="#ffffff" />
+      </head>
+      <body className={cx(openSans.className, "bg-brown-100 text-base")}>{children}</body>
     </html>
   )
 }
