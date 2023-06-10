@@ -1,6 +1,5 @@
 import Image from 'next/image'
 import Button from '@/components/button'
-import Icon from '@/components/icon'
 import { Heading, Text } from '@/components/typography'
 import Hero from './home/hero'
 import Navigation from './home/navigation'
@@ -27,7 +26,7 @@ export default function Home() {
         <Hero />
       </header>
       <section className="container py-40 mx-auto px-4" id="form-section">
-        <div className="grid gap-8 md:gap-0 md:grid-cols-2">
+        <div className="grid gap-8 lg:gap-0 lg:grid-cols-2">
           <div className="p-8 grid place-content-center">
             <div>
               <Heading level={3} className="text-brown-700 mb-4">
