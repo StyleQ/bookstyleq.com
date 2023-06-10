@@ -6,6 +6,11 @@ module.exports = {
     './app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
+    extend: {
+      translate: {
+        'toggle': 'calc(100% - 8px)'
+      }
+    },
     colors: {
       gold: "#D9B081",
       white: "#FFFFFF",
@@ -26,7 +31,7 @@ module.exports = {
       },
       brown: {
         100: "#F4F3ED",
-        200: "#FBE9DC",
+        200: "#DADADA",
         300: "#D9B081",
         400: "#F5C3A0",
         500: "#F0AA78",
@@ -41,8 +46,8 @@ module.exports = {
         300: "#C2E3C2",
         400: "#94CE94",
         500: "#66B966",
-        600: "#5CA35C",
-        700: "#3F6F3F",
+        600: "#426B69",
+        700: "#3E5F5D",
         800: "#2F532F",
         900: "#1F371F",
       },
