@@ -24,7 +24,8 @@ export default function Button({
     'bg-transparent hover:bg-translucent_light': variant === 'plain',
     'rounded py-2 px-4': size === 'sm' || size === 'md',
     'rounded-lg py-4 px-6': size === 'lg',
-    'rounded p-5 w-full': size === 'full',
+    'inline-block': size !== 'full',
+    'block rounded p-5 w-full': size === 'full',
   }, className)
   const Component = href ? 'a' : 'button'
 
