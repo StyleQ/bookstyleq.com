@@ -18,7 +18,7 @@ const Hero = () => {
   // }, [clientMode])
 
   return (
-    <div className="container mx-auto px-4 pt-32 pb-24 grid place-content-center">
+    <div className="wrapper pt-32 pb-24 grid place-content-center">
       <div className="grid gap-12 lg:gap-0 lg:grid-cols-2 text-center lg:text-left">
         <div className="grid place-content-center">
           <div>
@@ -51,7 +51,13 @@ const Hero = () => {
           </div>
         </div>
         <div className="grid place-content-center">
-          <Image src="/feature-highlight.png" width={400} height={576} alt="Feature highlight" />
+          {
+            clientMode ? (
+              <Image src="/client-feature-highlight.png" width={400} height={576} alt="Feature highlight" />
+            ) : (
+              <Image src="/stylist-feature-highlight.png" width={400} height={576} alt="Feature highlight" />
+            )
+          }
         </div>
       </div>
       <div className="px-8 pb-0 pt-16 mx-auto text-center">
