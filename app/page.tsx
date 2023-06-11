@@ -11,7 +11,7 @@ export default function Home() {
   return (
     <>
       <header className="bg-brown-900 text-white">
-        <div className="container mx-auto px-4 py-6 border-b border-translucent_light flex justify-between content-center">
+        <div className="wrapper py-6 border-b border-translucent_light flex justify-between content-center">
           <a href="/">
             <Image
               src="/styleq.svg"
@@ -25,9 +25,9 @@ export default function Home() {
         </div>
         <Hero />
       </header>
-      <section className="container py-40 mx-auto px-4" id="form-section">
-        <div className="grid gap-8 lg:gap-0 lg:grid-cols-2">
-          <div className="p-8 grid place-content-center">
+      <section className="wrapper py-40" id="form-section">
+        <div className="grid lg:grid-cols-2">
+          <div className="p-2 lg:p-8 grid place-content-center">
             <div>
               <Heading level={3} className="text-brown-700 mb-4">
                 Be the first to experience the future of beauty and wellness
@@ -38,7 +38,7 @@ export default function Home() {
               </Text>
             </div>
           </div>
-          <div className="p-8">
+          <div className="p-2 lg:pg-8">
             <form className="bg-white shadow-md rounded p-8">
               <input type="text" placeholder="Name" className="w-full mb-4 p-4 border border-gray-200 rounded" />
               <input type="email" placeholder="Email" className="w-full mb-4 p-4 border border-gray-200 rounded" />
@@ -49,13 +49,13 @@ export default function Home() {
         </div>
       </section>
       <section className="bg-green-600 text-white">
-        <div className="container mx-auto px-4 py-20 text-center">
+        <div className="wrapper py-20 text-center">
           <Heading level={3}>What our customers are saying</Heading>
           <Testimonials />
         </div>
       </section>
       <footer className="bg-brown-900 text-white">
-        <div className="container mx-auto px-4 py-8 flex justify-between content-center">
+        <div className="wrapper py-8 flex justify-between content-center">
           <div>&copy; {date.getFullYear()} StyleQ. All rights reserved</div>
           <Social />
         </div>
