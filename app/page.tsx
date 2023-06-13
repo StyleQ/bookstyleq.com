@@ -3,14 +3,12 @@ import Button from '@/components/button'
 import { Heading, Text } from '@/components/typography'
 import Hero from './home/hero'
 import Navigation from './home/navigation'
-import Social from './home/social'
 import Testimonials from './home/testimonials'
 
 export default function Home() {
-  const date = new Date()
   return (
     <>
-      <header className="bg-brown-900 text-white">
+      <header className="bg-blue-500 text-white">
         <div className="wrapper py-6 border-b border-translucent_light flex justify-between content-center">
           <a href="/">
             <Image
@@ -39,27 +37,21 @@ export default function Home() {
             </div>
           </div>
           <div className="p-2 lg:pg-8">
-            <form className="bg-white shadow-md rounded p-8">
-              <input type="text" placeholder="Name" className="w-full mb-4 p-4 border border-gray-200 rounded" />
-              <input type="email" placeholder="Email" className="w-full mb-4 p-4 border border-gray-200 rounded" />
-              <input type="text" placeholder="Zip Code" className="w-full mb-4 p-4 border border-gray-200 rounded" />
+            <form method="post" action="https://app.convertkit.com/forms/5261820/subscriptions" className="bg-white shadow-md rounded p-8">
+              <input type="text" name="fields[name]" placeholder="Name" className="w-full mb-4 p-4 border border-gray-200 rounded" />
+              <input type="email" name="email_address" placeholder="Email" className="w-full mb-4 p-4 border border-gray-200 rounded" />
+              <input type="text" name="fields[zip_code]" placeholder="Zip Code" className="w-full mb-4 p-4 border border-gray-200 rounded" />
               <Button variant="tertiary" size="full">Join the waitlist</Button>
             </form>
           </div>
         </div>
       </section>
-      <section className="bg-green-600 text-white">
+      <section className="bg-blue-500 text-white">
         <div className="wrapper py-20 text-center">
           <Heading level={3}>What our customers are saying</Heading>
           <Testimonials />
         </div>
       </section>
-      <footer className="bg-brown-900 text-white">
-        <div className="wrapper py-8 flex justify-between content-center">
-          <div>&copy; {date.getFullYear()} StyleQ. All rights reserved</div>
-          <Social />
-        </div>
-      </footer>
     </>
   )
 }

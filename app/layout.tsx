@@ -1,6 +1,7 @@
 import './globals.css'
 import { Open_Sans } from 'next/font/google'
 import cx from 'classnames'
+import Social from './home/social'
 
 const openSans = Open_Sans({ weight: '400', subsets: ['latin'] })
 
@@ -14,6 +15,7 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
+  const date = new Date()
   return (
     <html lang="en">
       <head>
@@ -25,7 +27,15 @@ export default function RootLayout({
         <meta name="msapplication-TileColor" content="a43f6a" />
         <meta name="theme-color" content="#ffffff" />
       </head>
-      <body className={cx(openSans.className, "bg-brown-100 text-base")}>{children}</body>
+      <body className={cx(openSans.className, "bg-brown-100 text-base")}>
+        {children}
+        <footer className="bg-black text-white">
+          <div className="wrapper py-8 flex justify-between content-center">
+            <div>&copy; {date.getFullYear()} StyleQ. All rights reserved</div>
+            <Social />
+          </div>
+        </footer>
+      </body>
     </html>
   )
 }
