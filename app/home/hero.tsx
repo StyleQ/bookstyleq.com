@@ -45,9 +45,9 @@ const Hero = () => {
         <div className="grid place-content-center">
           {
             clientMode ? (
-              <Image src="https://res.cloudinary.com/strich/image/upload/v1686706785/client-feature-highlight_fz1fp7.png" width={400} height={576} alt="Feature highlight" />
+              <Image src="https://res.cloudinary.com/strich/image/upload/v1686706785/client-feature-highlight_fz1fp7.png" width={400} height={565} alt="Client feature highlight" />
             ) : (
-              <Image src="https://res.cloudinary.com/strich/image/upload/v1686706784/stylist-feature-highlight_s1fk7m.png" width={400} height={576} alt="Feature highlight" />
+              <Image src="https://res.cloudinary.com/strich/image/upload/v1686706784/stylist-feature-highlight_s1fk7m.png" width={400} height={565} alt="Stylist feature highlight" />
             )
           }
         </div>
