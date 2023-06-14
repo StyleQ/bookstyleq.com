@@ -9,14 +9,6 @@ import cx from 'classnames'
 const Hero = () => {
   const [clientMode, setClientMode] = useState(true)
 
-  // toggles the clientMode state in every 15 seconds interval
-  // useEffect(() => {
-  //   const interval = setInterval(() => {
-  //     setClientMode(!clientMode)
-  //   }, 15000)
-  //   return () => clearInterval(interval)
-  // }, [clientMode])
-
   return (
     <div className="wrapper pt-32 pb-24 grid place-content-center">
       <div className="grid gap-12 lg:gap-0 lg:grid-cols-2 text-center lg:text-left">
@@ -53,9 +45,9 @@ const Hero = () => {
         <div className="grid place-content-center">
           {
             clientMode ? (
-              <Image src="/client-feature-highlight.png" width={400} height={576} alt="Feature highlight" />
+              <Image src="https://res.cloudinary.com/strich/image/upload/v1686706785/client-feature-highlight_fz1fp7.png" width={400} height={576} alt="Feature highlight" />
             ) : (
-              <Image src="/stylist-feature-highlight.png" width={400} height={576} alt="Feature highlight" />
+              <Image src="https://res.cloudinary.com/strich/image/upload/v1686706784/stylist-feature-highlight_s1fk7m.png" width={400} height={576} alt="Feature highlight" />
             )
           }
         </div>
