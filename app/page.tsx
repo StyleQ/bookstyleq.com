@@ -4,11 +4,16 @@ import { Heading, Text } from '@/components/typography'
 import Hero from './home/hero'
 import Navigation from './home/navigation'
 import Testimonials from './home/testimonials'
+import { theme } from '@/utils/tailwind'
+import { translucentBgImage } from '@/utils/colors'
 
 export default function Home() {
+  const blue500 = theme('colors.blue.500')
+  const headerBG = translucentBgImage('https://res.cloudinary.com/strich/image/upload/v1686845836/styleq-header_r4lmcw.jpg', blue500, 0.7)
+
   return (
     <>
-      <header className="bg-blue-500 text-white">
+      <header className="bg-cover bg-center text-white" style={{ backgroundImage: headerBG  }}>
         <div className="wrapper py-6 border-b border-translucent_light flex justify-between content-center">
           <a href="/">
             <Image
