@@ -9,7 +9,7 @@ import { translucentBgImage } from '@/utils/colors'
 
 export default function Home() {
   const blue500 = theme('colors.blue.500')
-  const headerBG = translucentBgImage('https://res.cloudinary.com/strich/image/upload/v1686845836/styleq-header_r4lmcw.jpg', blue500, [0.8, 1])
+  const headerBG = translucentBgImage('https://res.cloudinary.com/strich/image/upload/v1686845836/styleq-header_r4lmcw.jpg', blue500, [0.7, 1])
 
   return (
     <>
@@ -32,7 +32,7 @@ export default function Home() {
         </div>
         <Hero />
       </header>
-      <section className="wrapper py-40" id="form-section">
+      <section className="wrapper pt-24 pb-16" id="form-section">
         <div className="grid lg:grid-cols-2">
           <div className="p-2 lg:p-8 grid place-content-center">
             <div>
@@ -55,6 +55,59 @@ export default function Home() {
           </div>
         </div>
       </section>
+      <section className="wrapper py-2">
+        <div className="grid lg:grid-cols-2">
+          <div>
+            <Image
+              src="https://res.cloudinary.com/sq-assets/image/upload/v1687152549/IMG_9213_c1j8lb.jpg"
+              alt="StyleQ stylist cutting hair"
+              width={455}
+              height={604.5}
+              className="object-cover mx-auto"
+              style={{ clipPath: 'url(#convenienceClip)' }}
+            />
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="0" height="0">
+              <clipPath id="convenienceClip">
+              <path fillRule="nonzero" d="M362 114c40.8 29.7 74.7 68.1 79.8 109.8 4.8 41.7-19.8 86.7-39 129.3-19.2 42.6-33.3 83.1-61.8 117-28.5 34.2-71.1 61.8-111.9 58.8-40.5-3.3-78.9-36.9-116.4-67.8-37.5-31.2-73.8-59.7-94.8-99-21-39.6-26.7-90-.9-118.2 25.8-28.2 82.8-34.5 123-64.2 40.2-30 63.6-83.4 99-99.9 35.1-16.2 82.2 4.5 123 34.2Z"/>
+              </clipPath>
+            </svg>
+          </div>
+          <div className="flex flex-col justify-center text-center lg:text-left">
+            <Heading level={3} className="text-brown-700 mb-4">Style at your fingertips</Heading>
+            <Text className="text-lg">
+              Book a haircut on-demand, wherever you are.
+            </Text>
+          </div>
+        </div>
+      </section>
+      <section className="wrapper pt-52 lg:pt-0 pb-24">
+        <div className="grid lg:grid-cols-2">
+          <div className="flex flex-col justify-center text-center lg:text-right">
+            <Heading level={3} className="text-brown-700 mb-4">Tailored to your taste</Heading>
+            <Text className="text-lg mb-16 lg:mb-0">
+              Our barbers understand your unique style and preferences.
+            </Text>
+          </div>
+          <div>
+            <Image
+              src="https://res.cloudinary.com/sq-assets/image/upload/v1687157097/IMG_8088_dcvjal.jpg"
+              alt="StyleQ stylist cutting hair"
+              width={450}
+              height={600}
+              className="object-cover mx-auto"
+              style={{ clipPath: 'url(#personalizationClip)' }}
+            />
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="0" height="0">
+              <clipPath id="personalizationClip">
+                <path fill="#f06" fillRule="nonzero" d="M322.821 52.64c26.729 44.67 20.138 117.9 37.347 170.26 17.209 52.358 58.218 83.115 68.47 120.095 10.252 36.981-9.886 80.187-32.954 121.927-23.067 41.741-49.43 82.383-86.776 106.55-37.347 24.165-85.313 31.854-127.786 21.236-42.107-10.253-78.355-38.446-95.93-73.962-17.575-35.516-16.477-78.356-23.434-109.478-6.956-31.489-22.335-51.993-36.248-80.186-13.914-28.194-26.363-64.442-22.335-101.057 4.027-36.615 24.898-73.595 56.02-115.336 31.489-41.375 73.962-88.242 125.223-103.62 51.26-15.744 111.674-.732 138.403 43.572Z"/>
+              </clipPath>
+            </svg>
+          </div>
+        </div>
+      </section>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" className="w-full">
+        <path fill={blue500} fillOpacity="1" d="M0,64L80,80C160,96,320,128,480,144C640,160,800,160,960,154.7C1120,149,1280,139,1360,133.3L1440,128L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z" />
+      </svg>
       <section className="bg-blue-500 text-white">
         <div className="wrapper py-20 text-center">
           <Heading level={3}>What our customers are saying</Heading>
