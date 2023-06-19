@@ -1,9 +1,7 @@
 import './globals.css'
-import { Open_Sans } from 'next/font/google'
 import cx from 'classnames'
 import Social from './home/social'
-
-const openSans = Open_Sans({ weight: '400', subsets: ['latin'] })
+import { openSans } from '@/components/typography'
 
 export const metadata = {
   title: 'StyleQ - Find professional stylists near you',
@@ -30,7 +28,7 @@ export default function RootLayout({
       <body className={cx(openSans.className, "bg-brown-100 text-base")}>
         {children}
         <footer className="bg-black text-white">
-          <div className="wrapper py-8 flex justify-between content-center">
+          <div className="wrapper py-8 flex justify-between items-center">
             <div>&copy; {date.getFullYear()} StyleQ. All rights reserved</div>
             <Social />
           </div>

@@ -16,7 +16,7 @@ export default function Thanks() {
         />
         <Heading level={1} className="mb-4">Thank you for signing up</Heading>
         <p>We will be in touch with updates</p>
-        <Button href="/" variant="secondary" className="mt-8">Keep exploring our website</Button>
+        <Button is="secondary" href="/" className="mt-8">Keep exploring our website</Button>
       </div>
     </div>
   )
