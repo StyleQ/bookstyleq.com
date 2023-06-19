@@ -59,16 +59,16 @@ export default function Home() {
         <div className="grid lg:grid-cols-2">
           <div>
             <Image
-              src="https://res.cloudinary.com/sq-assets/image/upload/v1687152549/IMG_9213_c1j8lb.jpg"
-              alt="StyleQ stylist cutting hair"
-              width={455}
-              height={604.5}
+              src="https://res.cloudinary.com/sq-assets/image/upload/v1687182880/IMG_5786_ffw4th.jpg"
+              alt="Man getting groomed"
+              width={450}
+              height={600}
               className="object-cover mx-auto"
               style={{ clipPath: 'url(#convenienceClip)' }}
             />
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="0" height="0">
               <clipPath id="convenienceClip">
-              <path fillRule="nonzero" d="M362 114c40.8 29.7 74.7 68.1 79.8 109.8 4.8 41.7-19.8 86.7-39 129.3-19.2 42.6-33.3 83.1-61.8 117-28.5 34.2-71.1 61.8-111.9 58.8-40.5-3.3-78.9-36.9-116.4-67.8-37.5-31.2-73.8-59.7-94.8-99-21-39.6-26.7-90-.9-118.2 25.8-28.2 82.8-34.5 123-64.2 40.2-30 63.6-83.4 99-99.9 35.1-16.2 82.2 4.5 123 34.2Z"/>
+              <path fillRule="nonzero" d="M362 114c40.8 29.7 74.7 68.1 79.8 109.8 4.8 41.7-19.8 86.7-39 129.3-19.2 42.6-33.3 83.1-61.8 117-28.5 34.2-71.1 61.8-111.9 58.8-40.5-3.3-78.9-36.9-116.4-67.8-37.5-31.2-73.8-59.7-94.8-99-21-39.6-26.7-90-.9-118.2 25.8-28.2 82.8-34.5 123-64.2 40.2-30 63.6-83.4 99-99.9 35.1-16.2 82.2 4.5 123 34.2Z" />
               </clipPath>
             </svg>
           </div>
@@ -90,8 +90,8 @@ export default function Home() {
           </div>
           <div>
             <Image
-              src="https://res.cloudinary.com/sq-assets/image/upload/v1687157097/IMG_8088_dcvjal.jpg"
-              alt="StyleQ stylist cutting hair"
+              src="https://res.cloudinary.com/sq-assets/image/upload/v1687182246/IMG_5323_acbkin.jpg"
+              alt="StyleQ barber cutting hair"
               width={450}
               height={600}
               className="object-cover mx-auto"
