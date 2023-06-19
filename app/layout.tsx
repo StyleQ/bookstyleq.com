@@ -1,3 +1,4 @@
+import Script from 'next/script'
 import './globals.css'
 import cx from 'classnames'
 import Social from './home/social'
@@ -24,6 +25,17 @@ export default function RootLayout({
         <link rel="manifest" crossOrigin="use-credentials" href="/site.webmanifest" />
         <meta name="msapplication-TileColor" content="a43f6a" />
         <meta name="theme-color" content="#ffffff" />
+        <Script strategy="afterInteractive" src="https://www.googletagmanager.com/gtag/js?id=G-25HF2BZ16Q" />
+        <Script
+          id="gtag-init"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{ __html: `
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){window.dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'G-25HF2BZ16Q');
+        ` }} />
       </head>
       <body className={cx(openSans.className, "bg-brown-100 text-base")}>
         {children}
