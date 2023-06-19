@@ -7,7 +7,7 @@ const Hero = () => {
       <div className="grid place-content-center">
         <div>
           <Heading level={1} className="text-brown-300 mb-8 leading-snug lg:leading-none">
-            Barbers on demand: Elevate your style effortlessly
+            Barbers on Demand: Elevate your style effortlessly
           </Heading>
           <Text className="text-xl mb-16 leading-normal">
             Book same-day appointments for haircuts, grooming, and more, all from top-rated professionals near you.
