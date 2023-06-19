@@ -9,7 +9,7 @@ import { translucentBgImage } from '@/utils/colors'
 
 export default function Home() {
   const blue500 = theme('colors.blue.500')
-  const headerBG = translucentBgImage('https://res.cloudinary.com/strich/image/upload/v1686845836/styleq-header_r4lmcw.jpg', blue500, [0.7, 1])
+  const headerBG = translucentBgImage('https://res.cloudinary.com/sq-assets/image/upload/v1687148557/styleq-header_q4sl5u.jpg', blue500, [0.7, 1])
 
   return (
     <>
