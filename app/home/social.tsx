@@ -2,7 +2,7 @@ import Icon from "@/components/icon"
 
 export default function Social() {
   return (
-    <div className="flex gap-4 content-center">
+    <div className="flex gap-4">
       <a href="https://www.facebook.com/BookStyleQ/">
         <Icon name="facebook" />
       </a>

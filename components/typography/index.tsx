@@ -1,8 +1,9 @@
 import { Bree_Serif, Open_Sans } from 'next/font/google'
 import cx from 'classnames'
+import { hasTailwindPrefix } from '@/utils'
 
-const breeSerif = Bree_Serif({ weight: '400', subsets: ['latin'] })
-const openSans = Open_Sans({ weight: ['400', '500', '600', '700'], subsets: ['latin'] })
+export const breeSerif = Bree_Serif({ weight: '400', subsets: ['latin'] })
+export const openSans = Open_Sans({ weight: ['400', '500', '600', '700'], subsets: ['latin'] })
 
 type TextProps = {
   children: React.ReactNode,
@@ -23,15 +24,16 @@ export function Text({ children, as: Component = "p", ...props }: TextProps): JS
 }
 
 export function Heading({ children, level, className = '', ...props }: HeadingProps) : JSX.Element {
+  const hasTextSizeClass = hasTailwindPrefix('text-\d?(base|sm|xl|xs|lg)', className)
   const headingClassName: string = cx(className, 'font-semibold leading-snug', {
     [breeSerif.className]: level === 1,
     [openSans.className]: level !== 1,
-    'text-4xl': level === 1,
-    'text-3xl': level === 2,
-    'text-2xl': level === 3,
-    'text-xl': level === 4,
-    'text-lg': level === 5,
-    'text-base': level === 6,
+    'text-7xl': !hasTextSizeClass && level === 1,
+    'text-5xl': !hasTextSizeClass && level === 2,
+    'text-3xl': !hasTextSizeClass && level === 3,
+    'text-xl': !hasTextSizeClass && level === 4,
+    'text-lg': !hasTextSizeClass && level === 5,
+    'text-base': !hasTextSizeClass && level === 6,
   })
 
   return (
