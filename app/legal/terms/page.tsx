@@ -592,7 +592,7 @@ export default function Terms() {
             <Text>
               YOUR USE OF THE SERVICES IS AT YOUR SOLE RISK. YOU ARE FULLY AND SOLELY RESPONSIBLE FOR YOUR INTERACTIONS
               WITH OTHER USERS AND YOU AGREE THAT IT IS SOLELY YOUR RESPONSIBILITY TO TAKE REASONABLE PRECAUTIONS IN
-              ALL ACTIONS AND INTERACTIONS WITH OTHER STYLISTS AND CUSTOMERS AND IN THE PROVISION OR RECEIPT OF SERVICES.
+              ALL ACTIONS AND INTERACTIONS WITH OTHER STYLISTS AND CLIENTS AND IN THE PROVISION OR RECEIPT OF SERVICES.
               THE COMPANY IS NOT RESPONSIBLE FOR THE CONDUCT, WHETHER ONLINE OR OFFLINE, OF ANY USER OF THE SERVICES.
               THE COMPANY IS UNDER NO OBLIGATION TO, AND DOES NOT ROUTINELY, SCREEN ITS USERS, INQUIRE INTO THE
               BACKGROUND OF ITS USERS OR ATTEMPT TO VERIFY INFORMATION PROVIDED BY ANY USER. WE RESERVE THE RIGHT,
@@ -742,7 +742,7 @@ export default function Terms() {
             </Text>
             <ul className="list-disc list-inside flex flex-col gap-3">
               <li>
-                You agree and represent that you will honor the reservations made by Customers through the Services,
+                You agree and represent that you will honor the reservations made by Clients through the Services,
                 or will communicate with them in advance to resolve any scheduling conflicts to the Client&apos;s and
                 the Client&apos;s satisfaction.
               </li>
@@ -753,7 +753,7 @@ export default function Terms() {
               </li>
               <li>
                 All payment for Services will be provided to you from the Company.
-                You will not require a Customer to pay you directly.
+                You will not require a Client to pay you directly.
               </li>
               <li>
                 The Company is hereby granted an unlimited revocable license to use your trade names, trademarks,
@@ -805,7 +805,7 @@ export default function Terms() {
                 Company does not receive such updated accurate User Tax Information within sixty (60) days of your
                 receipt of the Company&apos;s request for updated User Tax Information, the Company will deduct any
                 applicable fees owed to the Company and will refund all undelivered earned payouts back to the
-                applicable Customer. The Company disclaims any and all liability related to such refunded payouts.
+                applicable Client. The Company disclaims any and all liability related to such refunded payouts.
                 <strong>“User Tax Information”</strong> means any information required to be provided to the IRS,
                 which includes but is not limited to the following: your name, address, Tax Identification
                 Number (such as a Social Security Number (SSN), or Employer Identification Number (EIN)), the
@@ -815,18 +815,18 @@ export default function Terms() {
                 Number associated with your account.
               </li>
               <li>
-                Each Stylist, as a separate entity from the Company, is solely responsible for all customer service issues
+                Each Stylist, as a separate entity from the Company, is solely responsible for all client service issues
                 relating to such Stylist&apos;s goods or services, including without limitation, any Services, pricing,
                 order fulfillment, order or appointment cancellation, returns, refunds and adjustments, rebates,
                 functionality and warranty, and feedback concerning experiences with such Stylist, any personnel,
-                their policies or processes. In performing customer service, Stylists must present themselves as a separate
-                entity from the Company. As between Stylistics and the Company, the Company is solely responsible for customer
+                their policies or processes. In performing client service, Stylists must present themselves as a separate
+                entity from the Company. As between Stylistics and the Company, the Company is solely responsible for client
                 service issues relating to any account, payment, Card processing, debiting or crediting.
               </li>
               <li>
                 The amount of a transaction may be reversed or charged back to your account
                 (a &quot;<strong>Chargeback</strong>&quot;) if the transaction (a) is disputed, (b) is reversed for
-                any reason by our processor, or a Customer or our financial institution, (c) was not authorized or we
+                any reason by our processor, or a Client or our financial institution, (c) was not authorized or we
                 have any reason to believe that the transaction was not authorized, (d) is allegedly unlawful,
                 suspicious, or in violation of the terms of this Agreement.
               </li>
