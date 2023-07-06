@@ -68,7 +68,7 @@ export default function Privacy() {
             <Text>
               California residents under 16 years of age may have additional rights regarding the collection
               and sale of their personal information. Please see
-              [<a href="#california-rights" className="link">California Privacy Rights</a>] for more information.
+              [<a href="#california-residents" className="link">California Privacy Rights</a>] for more information.
             </Text>
           </div>
         </section>
@@ -464,7 +464,7 @@ export default function Privacy() {
           </div>
         </section>
         <section className="border-b border-gray-200 py-8">
-          <Heading level={3} className="font-medium text-lg mb-2">
+          <Heading level={3} className="font-medium text-lg mb-2" id="changes-to-policy">
             Changes to Our Privacy Policy
           </Heading>
           <div className="flex flex-col gap-4">
