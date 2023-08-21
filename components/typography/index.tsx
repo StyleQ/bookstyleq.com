@@ -25,7 +25,7 @@ export function Text({ children, as: Component = "div", ...props }: TextProps): 
 }
 
 export function Heading({ children, level, className = '', ...props }: HeadingProps) : JSX.Element {
-  const hasTextSizeClass = hasTailwindPrefix('text-\d?(base|sm|xl|xs|lg)', className)
+  const hasTextSizeClass = hasTailwindPrefix('text-\\d?(base|sm|xl|xs|lg)', className)
   const headingClassName: string = cx(className, 'font-semibold', {
     [breeSerif.className]: level === 1,
     [openSans.className]: level !== 1,
