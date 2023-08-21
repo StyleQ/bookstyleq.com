@@ -13,6 +13,7 @@ type TStylist = {
   bio: string
   logo: string
   web_address: string
+  profile_url: string
 }
 
 export default function StylistsPage() {
@@ -32,6 +33,7 @@ export default function StylistsPage() {
           console.error(data.error)    
           return
         }
+        console.log(data)
         setStylists(data.filter((s: TStylist) => Boolean(s.name) && Boolean(s.email)))
       } catch (error) {
         console.error(error)
@@ -60,7 +62,7 @@ export default function StylistsPage() {
               />
               <Text>{stylist.name}</Text>
               <Button
-                href={stylist.web_address}
+                href={stylist.profile_url}
                 rel="noopener noreferrer"
                 is="primary"
               >
