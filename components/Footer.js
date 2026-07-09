@@ -13,11 +13,11 @@ const columns = [
   },
   {
     title: "COMPANY",
-    items: ["Our story", "For facilities", "Careers", "Journal"],
+    items: ["For facilities", "Careers", "Journal"],
   },
   {
     title: "CONTACT",
-    items: ["hello@styleq.care", "(555) 014-7788", "Serving 12 states"],
+    items: ["chantel@bookstyleq.com", "(262) 345-2127", "Serving Wisconsin and more."],
   },
 ];
 
@@ -46,9 +46,9 @@ export default function Footer() {
                 key={label}
                 href="#"
                 aria-label={label}
-                className="flex h-[38px] w-[38px] items-center justify-center rounded-full border border-sq-line bg-white"
+                className="group flex h-[38px] w-[38px] items-center justify-center rounded-full border border-sq-line bg-white transition-all duration-300 hover:-translate-y-0.5 hover:border-sq-rose hover:shadow-sm"
               >
-                <Icon className="h-4 w-4 text-sq-plum" />
+                <Icon className="h-4 w-4 text-sq-plum transition-colors group-hover:text-sq-rose" />
               </a>
             ))}
           </div>
@@ -73,8 +73,21 @@ export default function Footer() {
           © 2026 StyleQ. Beauty in every chapter.
         </div>
         <div className="flex gap-6 text-[13px] text-sq-muted">
-          <Link href="#">Privacy</Link>
-          <Link href="#">Terms</Link>
+          <Link
+            href="/stylist-code-of-conduct"
+            className="transition-colors hover:text-sq-rose"
+          >
+            Stylist Code of Conduct
+          </Link>
+          <Link
+            href="/privacy"
+            className="transition-colors hover:text-sq-rose"
+          >
+            Privacy
+          </Link>
+          <Link href="/terms" className="transition-colors hover:text-sq-rose">
+            Terms
+          </Link>
         </div>
       </div>
     </footer>

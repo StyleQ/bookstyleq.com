@@ -21,3 +21,25 @@
 body {
   @apply bg-sq-cream font-sans text-sq-ink antialiased;
 }
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  @keyframes sq-fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(18px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fade-up {
+    opacity: 0;
+    animation: sq-fade-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+}

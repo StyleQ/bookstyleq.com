@@ -32,6 +32,7 @@ yarn-error.log*
 
 # env files (can opt-in for committing if needed)
 .env*
+!.env.example
 
 # vercel
 .vercel
@@ -42,3 +43,7 @@ next-env.d.ts
 
 # design reference exports
 .design-ref/
+
+# private ops knowledge — raw research with customer/individual names.
+# NEVER commit to this public repo.
+/docs/private/
