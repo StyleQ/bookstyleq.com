@@ -19,6 +19,8 @@ import Footer from "@/components/Footer";
 import NavBar from "@/components/NavBar";
 import NewsletterForm from "@/components/NewsletterForm";
 import Reveal from "@/components/Reveal";
+import Strands from "@/components/Strands";
+import Threads from "@/components/Threads";
 
 function Eyebrow({ children, leafClassName = "text-sq-coral" }) {
   return (
@@ -195,7 +197,7 @@ function Services() {
   return (
     <section
       id="services"
-      className="flex flex-col gap-10 px-6 py-16 md:px-12 lg:gap-14 lg:px-20 lg:py-24"
+      className="flex flex-col gap-10 px-6 pt-16 pb-4 md:px-12 lg:gap-14 lg:px-20 lg:pt-24 lg:pb-8"
     >
       <Reveal className="flex flex-col items-center gap-4">
         <Eyebrow>OUR SERVICES</Eyebrow>
@@ -233,7 +235,7 @@ function ForFacilities() {
   return (
     <section
       id="facilities"
-      className="flex flex-col gap-10 px-6 py-16 md:px-12 lg:flex-row lg:gap-20 lg:px-20 lg:py-26"
+      className="flex flex-col gap-10 px-6 pt-4 pb-16 md:px-12 lg:flex-row lg:gap-20 lg:px-20 lg:pb-26 lg:pt-8"
     >
       <Reveal className="flex w-full flex-col items-start gap-6 lg:w-[460px] lg:shrink-0">
         <Eyebrow>FOR FACILITIES</Eyebrow>
@@ -281,7 +283,7 @@ function ForFacilities() {
 
 function WhyStyleQ() {
   return (
-    <section className="flex flex-col gap-10 px-6 py-16 md:px-12 lg:flex-row lg:items-center lg:gap-20 lg:px-30 lg:py-26">
+    <section className="flex flex-col gap-10 px-6 pt-16 pb-4 md:px-12 lg:flex-row lg:items-center lg:gap-20 lg:px-30 lg:pt-26 lg:pb-8">
       <Reveal className="flex w-full flex-col items-start gap-6 lg:w-[440px] lg:shrink-0">
         <span className="text-[13px] font-semibold tracking-[3px] text-sq-rose">
           A PARTNER YOU CAN TRUST
@@ -330,7 +332,7 @@ function WhyStyleQ() {
 
 function Testimonials() {
   return (
-    <section className="flex flex-col items-center gap-10 px-6 py-16 md:px-12 lg:gap-14 lg:px-30 lg:py-[110px]">
+    <section className="flex flex-col items-center gap-10 px-6 pb-16 pt-4 md:px-12 lg:gap-14 lg:px-30 lg:pb-[110px] lg:pt-4">
       <Reveal className="flex w-full max-w-[640px] flex-col items-center gap-3.5">
         <span className="text-[13px] font-semibold tracking-[3px] text-sq-teal">
           KIND WORDS
@@ -427,6 +429,44 @@ function CtaBanner() {
   );
 }
 
+function ThreadsDivider() {
+  return (
+    <div
+      aria-hidden="true"
+      className="relative h-[250px] w-full overflow-hidden opacity-70 [mask-image:linear-gradient(to_bottom,transparent,black_35%,black_65%,transparent)] [-webkit-mask-image:linear-gradient(to_bottom,transparent,black_35%,black_65%,transparent)]"
+    >
+      <Threads
+        color={[0.776, 0.357, 0.537]}
+        amplitude={1.7}
+        distance={0.5}
+      />
+    </div>
+  );
+}
+
+function StrandsDivider() {
+  return (
+    <div
+      aria-hidden="true"
+      className="relative mx-auto h-[220px] w-full max-w-[1100px] overflow-hidden [mask-image:linear-gradient(to_bottom,transparent,black_30%,black_70%,transparent)] [-webkit-mask-image:linear-gradient(to_bottom,transparent,black_30%,black_70%,transparent)]"
+    >
+      <Strands
+        colors={["#C65B89", "#74508F", "#F6D4AC"]}
+        count={3}
+        speed={0.3}
+        amplitude={1}
+        thickness={0.6}
+        glow={1.1}
+        taper={3.5}
+        intensity={0.35}
+        saturation={0.75}
+        opacity={0.5}
+        scale={4.6}
+      />
+    </div>
+  );
+}
+
 export default function Home() {
   return (
     <>
@@ -434,8 +474,10 @@ export default function Home() {
       <main>
         <Hero />
         <Services />
+        <ThreadsDivider />
         <ForFacilities />
         <WhyStyleQ />
+        <StrandsDivider />
         <Testimonials />
         <CtaBanner />
       </main>
