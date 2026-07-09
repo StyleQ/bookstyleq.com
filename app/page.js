@@ -18,6 +18,7 @@ import BrandLeaf from "@/components/BrandLeaf";
 import Footer from "@/components/Footer";
 import NavBar from "@/components/NavBar";
 import NewsletterForm from "@/components/NewsletterForm";
+import Parallax from "@/components/Parallax";
 import Reveal from "@/components/Reveal";
 import Strands from "@/components/Strands";
 import Threads from "@/components/Threads";
@@ -132,9 +133,21 @@ const testimonials = [
 
 function Hero() {
   return (
-    <section className="relative flex flex-col items-center gap-10 overflow-hidden px-6 pt-10 pb-16 md:px-12 lg:flex-row lg:gap-18 lg:px-20 lg:pt-14 lg:pb-22">
-      <BrandLeaf className="absolute bottom-4 left-7 hidden h-[84px] w-[84px] -rotate-[18deg] text-sq-peach opacity-55 lg:block" />
-      <BrandLeaf className="absolute bottom-13 left-31 hidden h-[52px] w-[52px] rotate-[30deg] text-sq-coral opacity-35 lg:block" />
+    <section className="relative flex flex-col items-center gap-10 overflow-x-clip px-6 pt-10 pb-16 md:px-12 lg:flex-row lg:gap-18 lg:px-20 lg:pt-14 lg:pb-22">
+      <Parallax
+        speed={0.1}
+        className="absolute bottom-4 left-7 hidden lg:block"
+        aria-hidden="true"
+      >
+        <BrandLeaf className="h-[84px] w-[84px] -rotate-[18deg] text-sq-peach opacity-55" />
+      </Parallax>
+      <Parallax
+        speed={0.17}
+        className="absolute bottom-13 left-31 hidden lg:block"
+        aria-hidden="true"
+      >
+        <BrandLeaf className="h-[52px] w-[52px] rotate-[30deg] text-sq-coral opacity-35" />
+      </Parallax>
       <div className="relative flex w-full flex-1 flex-col items-start gap-6 lg:gap-7">
         <div className="animate-fade-up">
           <Eyebrow>ON-SITE SALON &amp; SPA FOR SENIOR LIVING</Eyebrow>
@@ -379,20 +392,24 @@ function CtaBanner() {
       className="px-6 pb-16 md:px-12 lg:px-30 lg:pb-[110px]"
     >
       <Reveal className="relative flex flex-col items-center gap-5 overflow-hidden rounded-[32px] bg-linear-[68deg,#74508F_14.6%,#C65B89_85.4%] px-6 py-14 sm:px-12 lg:rounded-[44px] lg:px-30 lg:py-22">
-        <svg
-          viewBox="0 0 120 120"
-          className="absolute -top-24 -left-32 h-[260px] w-[260px] -rotate-[35deg]"
+        <Parallax
+          speed={0.14}
+          className="absolute -top-24 -left-32 h-[260px] w-[260px]"
           aria-hidden="true"
         >
-          <path d="M60 0c35 30 35 85 0 120-35-35-35-90 0-120z" fill="#FFFFFF14" />
-        </svg>
-        <svg
-          viewBox="0 0 120 120"
-          className="absolute top-[120px] right-[-100px] h-[300px] w-[300px] rotate-[140deg]"
+          <svg viewBox="0 0 120 120" className="h-full w-full -rotate-[35deg]">
+            <path d="M60 0c35 30 35 85 0 120-35-35-35-90 0-120z" fill="#FFFFFF14" />
+          </svg>
+        </Parallax>
+        <Parallax
+          speed={0.09}
+          className="absolute top-[120px] right-[-100px] h-[300px] w-[300px]"
           aria-hidden="true"
         >
-          <path d="M60 0c35 30 35 85 0 120-35-35-35-90 0-120z" fill="#FFFFFF12" />
-        </svg>
+          <svg viewBox="0 0 120 120" className="h-full w-full rotate-[140deg]">
+            <path d="M60 0c35 30 35 85 0 120-35-35-35-90 0-120z" fill="#FFFFFF12" />
+          </svg>
+        </Parallax>
         <span className="relative text-[13px] font-semibold tracking-[3px] text-sq-peach">
           SEE HOW STYLEQ WORKS
         </span>

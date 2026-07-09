@@ -91,7 +91,11 @@ const jsonLd = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${geist.variable} ${fraunces.variable}`}>
+    <html
+      lang="en"
+      data-scroll-behavior="smooth"
+      className={`${geist.variable} ${fraunces.variable}`}
+    >
       <body>
         {children}
         <script
