@@ -37,26 +37,19 @@ export const metadata = {
   alternates: {
     canonical: "/",
   },
+  // OG and Twitter images come from app/opengraph-image.js and
+  // app/twitter-image.js (file conventions), so no images are listed here.
   openGraph: {
     type: "website",
     url: siteUrl,
     siteName: "StyleQ",
     title: "On-Site Salon & Spa for Senior Living | StyleQ",
     description: siteDescription,
-    images: [
-      {
-        url: "/images/hero-spa.png",
-        width: 1120,
-        height: 1200,
-        alt: "A StyleQ stylist giving a resident a gentle salon treatment",
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "On-Site Salon & Spa for Senior Living | StyleQ",
     description: siteDescription,
-    images: ["/images/hero-spa.png"],
   },
   robots: {
     index: true,
@@ -75,7 +68,7 @@ const jsonLd = {
   name: "StyleQ",
   description: siteDescription,
   url: siteUrl,
-  image: `${siteUrl}/images/hero-spa.png`,
+  image: `${siteUrl}/opengraph-image`,
   email: "chantel@bookstyleq.com",
   telephone: "+1-262-345-2127",
   areaServed: "US",

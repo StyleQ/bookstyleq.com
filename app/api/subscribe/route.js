@@ -51,7 +51,14 @@ export async function POST(request) {
   });
 
   if (sendError) {
-    console.error("[subscribe] Resend send failed:", sendError);
+    // Log the fields explicitly: the Resend error object flattens to "{}" under
+    // some structured loggers, hiding the real cause (e.g. unverified domain).
+    console.error(
+      "[subscribe] Resend send failed:",
+      sendError.statusCode,
+      sendError.name,
+      sendError.message,
+    );
     return NextResponse.json(
       { ok: false, error: "We couldn’t send your brochure just now. Please try again." },
       { status: 502 },
@@ -66,7 +73,12 @@ export async function POST(request) {
     unsubscribed: false,
   });
   if (contactError) {
-    console.error("[subscribe] Resend contact add failed:", contactError);
+    console.error(
+      "[subscribe] Resend contact add failed:",
+      contactError.statusCode,
+      contactError.name,
+      contactError.message,
+    );
   }
 
   return NextResponse.json({ ok: true });
