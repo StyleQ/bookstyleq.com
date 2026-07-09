@@ -29,9 +29,9 @@ const socials = [
 
 export default function Footer() {
   return (
-    <footer className="flex flex-col gap-12 bg-sq-peach-soft px-30 pt-18 pb-10">
-      <div className="flex w-full gap-20">
-        <div className="flex w-[360px] shrink-0 flex-col gap-4">
+    <footer className="flex flex-col gap-10 bg-sq-peach-soft px-6 pt-14 pb-10 md:gap-12 md:px-12 lg:px-30 lg:pt-18">
+      <div className="flex w-full flex-col gap-10 md:flex-row md:gap-16 lg:gap-20">
+        <div className="flex w-full flex-col gap-4 md:w-[320px] md:shrink-0 lg:w-[360px]">
           <Link href="/" className="font-heading text-[30px] font-semibold">
             <span className="text-sq-ink">Style</span>
             <span className="text-sq-rose">Q</span>
@@ -53,26 +53,27 @@ export default function Footer() {
             ))}
           </div>
         </div>
-        <div className="flex-1" />
-        {columns.map(({ title, items }) => (
-          <div key={title} className="flex w-[180px] shrink-0 flex-col gap-3.5">
-            <div className="text-[13px] font-semibold tracking-[2px] text-sq-ink">
-              {title}
-            </div>
-            {items.map((item) => (
-              <div key={item} className="text-[14px] text-sq-muted">
-                {item}
+        <div className="grid flex-1 grid-cols-2 gap-8 sm:grid-cols-3">
+          {columns.map(({ title, items }) => (
+            <div key={title} className="flex flex-col gap-3.5">
+              <div className="text-[13px] font-semibold tracking-[2px] text-sq-ink">
+                {title}
               </div>
-            ))}
-          </div>
-        ))}
+              {items.map((item) => (
+                <div key={item} className="text-[14px] text-sq-muted">
+                  {item}
+                </div>
+              ))}
+            </div>
+          ))}
+        </div>
       </div>
       <div className="h-px w-full bg-sq-line" />
-      <div className="flex w-full items-center justify-between">
+      <div className="flex w-full flex-col gap-4 md:flex-row md:items-center md:justify-between">
         <div className="text-[13px] text-sq-muted">
           © 2026 StyleQ. Beauty in every chapter.
         </div>
-        <div className="flex gap-6 text-[13px] text-sq-muted">
+        <div className="flex flex-wrap gap-x-6 gap-y-2 text-[13px] text-sq-muted">
           <Link
             href="/stylist-code-of-conduct"
             className="transition-colors hover:text-sq-rose"

@@ -130,21 +130,21 @@ const testimonials = [
 
 function Hero() {
   return (
-    <section className="relative flex items-center gap-18 overflow-hidden px-20 pt-14 pb-22">
-      <BrandLeaf className="absolute bottom-4 left-7 h-[84px] w-[84px] -rotate-[18deg] text-sq-peach opacity-55" />
-      <BrandLeaf className="absolute bottom-13 left-31 h-[52px] w-[52px] rotate-[30deg] text-sq-coral opacity-35" />
-      <div className="relative flex flex-1 flex-col items-start gap-7">
+    <section className="relative flex flex-col items-center gap-10 overflow-hidden px-6 pt-10 pb-16 md:px-12 lg:flex-row lg:gap-18 lg:px-20 lg:pt-14 lg:pb-22">
+      <BrandLeaf className="absolute bottom-4 left-7 hidden h-[84px] w-[84px] -rotate-[18deg] text-sq-peach opacity-55 lg:block" />
+      <BrandLeaf className="absolute bottom-13 left-31 hidden h-[52px] w-[52px] rotate-[30deg] text-sq-coral opacity-35 lg:block" />
+      <div className="relative flex w-full flex-1 flex-col items-start gap-6 lg:gap-7">
         <div className="animate-fade-up">
           <Eyebrow>ON-SITE SALON &amp; SPA FOR SENIOR LIVING</Eyebrow>
         </div>
         <h1
-          className="animate-fade-up font-heading text-[58px] leading-[65px] font-medium text-sq-ink"
+          className="animate-fade-up font-heading text-[34px] leading-[40px] font-medium text-sq-ink sm:text-[42px] sm:leading-[48px] lg:text-[58px] lg:leading-[65px]"
           style={{ animationDelay: "0.08s" }}
         >
           Give every resident a spa day, without asking more of your staff
         </h1>
         <p
-          className="animate-fade-up text-[17px] leading-[28px] text-sq-muted"
+          className="animate-fade-up text-[16px] leading-[26px] text-sq-muted lg:text-[17px] lg:leading-[28px]"
           style={{ animationDelay: "0.16s" }}
         >
           StyleQ is a fully managed on-site salon and spa for senior living
@@ -154,18 +154,18 @@ function Hero() {
           nothing.
         </p>
         <div
-          className="animate-fade-up flex items-center gap-4"
+          className="animate-fade-up flex w-full flex-col items-stretch gap-3 sm:w-auto sm:flex-row sm:items-center sm:gap-4"
           style={{ animationDelay: "0.24s" }}
         >
           <AnchorLink
             href="/#contact"
-            className="rounded-full bg-sq-rose px-[34px] py-[17px] text-[16px] font-medium text-white shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:bg-sq-rose/90 hover:shadow-lg hover:shadow-sq-rose/25"
+            className="rounded-full bg-sq-rose px-8 py-4 text-center text-[16px] font-medium text-white shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:bg-sq-rose/90 hover:shadow-lg hover:shadow-sq-rose/25 lg:px-[34px] lg:py-[17px]"
           >
             Get the Brochure
           </AnchorLink>
           <AnchorLink
             href="/#services"
-            className="rounded-full border-[1.5px] border-sq-peach px-[34px] py-[17px] text-[16px] font-medium text-sq-ink transition-all duration-300 hover:-translate-y-0.5 hover:border-sq-rose hover:text-sq-rose"
+            className="rounded-full border-[1.5px] border-sq-peach px-8 py-4 text-center text-[16px] font-medium text-sq-ink transition-all duration-300 hover:-translate-y-0.5 hover:border-sq-rose hover:text-sq-rose lg:px-[34px] lg:py-[17px]"
           >
             Explore Services
           </AnchorLink>
@@ -177,13 +177,13 @@ function Hero() {
           Built for assisted living and memory care communities
         </p>
       </div>
-      <div className="group relative h-[600px] w-[560px] shrink-0 overflow-hidden rounded-tl-[200px] rounded-tr-[40px] rounded-br-[200px] rounded-bl-[40px]">
+      <div className="group relative h-[360px] w-full max-w-[420px] shrink-0 overflow-hidden rounded-tl-[120px] rounded-tr-[28px] rounded-br-[120px] rounded-bl-[28px] sm:h-[460px] sm:max-w-[500px] lg:h-[600px] lg:w-[560px] lg:max-w-none lg:rounded-tl-[200px] lg:rounded-tr-[40px] lg:rounded-br-[200px] lg:rounded-bl-[40px]">
         <Image
           src="/images/hero-spa.png"
           alt="A StyleQ stylist giving a resident a gentle salon treatment"
           fill
           priority
-          sizes="560px"
+          sizes="(max-width: 1024px) 90vw, 560px"
           className="object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-105 motion-reduce:transform-none"
         />
       </div>
@@ -193,21 +193,24 @@ function Hero() {
 
 function Services() {
   return (
-    <section id="services" className="flex flex-col gap-14 px-20 py-24">
+    <section
+      id="services"
+      className="flex flex-col gap-10 px-6 py-16 md:px-12 lg:gap-14 lg:px-20 lg:py-24"
+    >
       <Reveal className="flex flex-col items-center gap-4">
         <Eyebrow>OUR SERVICES</Eyebrow>
-        <h2 className="font-heading text-[42px] font-medium text-sq-ink">
+        <h2 className="text-center font-heading text-[30px] font-medium text-sq-ink sm:text-[36px] lg:text-[42px]">
           Care your residents will look forward to
         </h2>
-        <p className="w-[620px] text-center text-[16px] leading-[26px] text-sq-muted">
+        <p className="w-full max-w-[620px] text-center text-[16px] leading-[26px] text-sq-muted">
           Every visit is unhurried and gentle, led by licensed, insured
           professionals and adapted to each resident&apos;s comfort, mobility,
           and mood.
         </p>
       </Reveal>
-      <div className="flex gap-7">
+      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4 lg:gap-7">
         {services.map(({ Icon, title, desc }, i) => (
-          <Reveal key={title} delay={i * 90} className="flex flex-1">
+          <Reveal key={title} delay={i * 90} className="flex">
             <div className="group flex w-full flex-col items-center gap-[18px] rounded-tl-[80px] rounded-3xl bg-white px-7 py-9 transition duration-300 hover:-translate-y-1.5 hover:shadow-xl hover:shadow-sq-plum/5">
               <div className="flex h-14 w-14 items-center justify-center rounded-full bg-sq-peach-soft transition-transform duration-300 group-hover:scale-110">
                 <Icon className="h-[22px] w-[22px] text-sq-teal opacity-70" />
@@ -228,10 +231,13 @@ function Services() {
 
 function ForFacilities() {
   return (
-    <section id="facilities" className="flex gap-20 px-20 py-26">
-      <Reveal className="flex w-[460px] shrink-0 flex-col items-start gap-6">
+    <section
+      id="facilities"
+      className="flex flex-col gap-10 px-6 py-16 md:px-12 lg:flex-row lg:gap-20 lg:px-20 lg:py-26"
+    >
+      <Reveal className="flex w-full flex-col items-start gap-6 lg:w-[460px] lg:shrink-0">
         <Eyebrow>FOR FACILITIES</Eyebrow>
-        <h2 className="font-heading text-[40px] leading-[47px] font-medium text-sq-ink">
+        <h2 className="font-heading text-[30px] leading-[38px] font-medium text-sq-ink sm:text-[36px] sm:leading-[44px] lg:text-[40px] lg:leading-[47px]">
           Salon days, handled from start to finish
         </h2>
         <p className="text-[16px] leading-[26px] text-sq-muted">
@@ -247,10 +253,10 @@ function ForFacilities() {
           Get the Brochure
         </AnchorLink>
       </Reveal>
-      <div className="flex flex-1 flex-col gap-5">
+      <div className="flex w-full flex-1 flex-col gap-5">
         {steps.map(({ num, Icon, title, desc }, i) => (
           <Reveal key={num} delay={i * 90} className="flex">
-            <div className="group flex w-full items-center gap-6 rounded-3xl bg-white px-8 py-7 transition duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-sq-plum/5">
+            <div className="group flex w-full items-center gap-4 rounded-3xl bg-white px-5 py-6 transition duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-sq-plum/5 sm:gap-6 sm:px-8 sm:py-7">
               <div className="font-heading text-[34px] font-medium italic text-sq-coral">
                 {num}
               </div>
@@ -275,12 +281,12 @@ function ForFacilities() {
 
 function WhyStyleQ() {
   return (
-    <section className="flex items-center gap-20 px-30 py-26">
-      <Reveal className="flex w-[440px] shrink-0 flex-col items-start gap-6">
+    <section className="flex flex-col gap-10 px-6 py-16 md:px-12 lg:flex-row lg:items-center lg:gap-20 lg:px-30 lg:py-26">
+      <Reveal className="flex w-full flex-col items-start gap-6 lg:w-[440px] lg:shrink-0">
         <span className="text-[13px] font-semibold tracking-[3px] text-sq-rose">
           A PARTNER YOU CAN TRUST
         </span>
-        <h2 className="font-heading text-[40px] leading-[47px] text-sq-ink">
+        <h2 className="font-heading text-[30px] leading-[38px] text-sq-ink sm:text-[36px] sm:leading-[44px] lg:text-[40px] lg:leading-[47px]">
           We make radiant residents the easiest part of your calendar.
         </h2>
         <p className="text-[16px] leading-[27px] text-sq-muted">
@@ -305,29 +311,17 @@ function WhyStyleQ() {
           </div>
         </div>
       </Reveal>
-      <div className="flex flex-1 flex-col gap-6">
-        {[whyTiles.slice(0, 2), whyTiles.slice(2)].map((row, i) => (
-          <div key={i} className="flex gap-6">
-            {row.map(({ Icon, title, desc }, j) => (
-              <Reveal
-                key={title}
-                delay={(i * 2 + j) * 80}
-                className="flex flex-1"
-              >
-                <div className="group flex w-full flex-col items-start gap-3.5 rounded-3xl bg-white p-7 transition duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-sq-plum/5">
-                  <div className="flex h-11 w-11 items-center justify-center rounded-full bg-sq-peach-soft transition-transform duration-300 group-hover:scale-110">
-                    <Icon className="h-5 w-5 text-sq-rose" />
-                  </div>
-                  <h3 className="text-[16px] font-semibold text-sq-ink">
-                    {title}
-                  </h3>
-                  <p className="text-[14px] leading-[22px] text-sq-muted">
-                    {desc}
-                  </p>
-                </div>
-              </Reveal>
-            ))}
-          </div>
+      <div className="grid w-full flex-1 grid-cols-1 gap-5 sm:grid-cols-2 lg:gap-6">
+        {whyTiles.map(({ Icon, title, desc }, i) => (
+          <Reveal key={title} delay={i * 80} className="flex">
+            <div className="group flex w-full flex-col items-start gap-3.5 rounded-3xl bg-white p-7 transition duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-sq-plum/5">
+              <div className="flex h-11 w-11 items-center justify-center rounded-full bg-sq-peach-soft transition-transform duration-300 group-hover:scale-110">
+                <Icon className="h-5 w-5 text-sq-rose" />
+              </div>
+              <h3 className="text-[16px] font-semibold text-sq-ink">{title}</h3>
+              <p className="text-[14px] leading-[22px] text-sq-muted">{desc}</p>
+            </div>
+          </Reveal>
         ))}
       </div>
     </section>
@@ -336,18 +330,18 @@ function WhyStyleQ() {
 
 function Testimonials() {
   return (
-    <section className="flex flex-col items-center gap-14 px-30 py-[110px]">
-      <Reveal className="flex w-[640px] flex-col items-center gap-3.5">
+    <section className="flex flex-col items-center gap-10 px-6 py-16 md:px-12 lg:gap-14 lg:px-30 lg:py-[110px]">
+      <Reveal className="flex w-full max-w-[640px] flex-col items-center gap-3.5">
         <span className="text-[13px] font-semibold tracking-[3px] text-sq-teal">
           KIND WORDS
         </span>
-        <h2 className="text-center font-heading text-[40px] leading-[48px] text-sq-ink">
+        <h2 className="text-center font-heading text-[30px] leading-[38px] text-sq-ink sm:text-[34px] sm:leading-[42px] lg:text-[40px] lg:leading-[48px]">
           Trusted by care teams and the people they care for
         </h2>
       </Reveal>
-      <div className="flex w-full gap-7">
+      <div className="grid w-full grid-cols-1 gap-6 md:grid-cols-3 lg:gap-7">
         {testimonials.map(({ quote, initials, name, role, color, avatarBg }, i) => (
-          <Reveal key={name} delay={i * 90} className="flex flex-1">
+          <Reveal key={name} delay={i * 90} className="flex">
             <div className="flex w-full flex-col items-start gap-6 rounded-3xl border border-sq-line bg-white p-9 transition duration-300 hover:-translate-y-1 hover:border-transparent hover:shadow-xl hover:shadow-sq-plum/5">
               <div className={`font-heading text-[52px] leading-[36px] ${color}`}>
                 “
@@ -378,8 +372,11 @@ function Testimonials() {
 
 function CtaBanner() {
   return (
-    <section id="contact" className="px-30 pb-[110px]">
-      <Reveal className="relative flex flex-col items-center gap-5 overflow-hidden rounded-[44px] bg-linear-[68deg,#74508F_14.6%,#C65B89_85.4%] px-30 py-22">
+    <section
+      id="contact"
+      className="px-6 pb-16 md:px-12 lg:px-30 lg:pb-[110px]"
+    >
+      <Reveal className="relative flex flex-col items-center gap-5 overflow-hidden rounded-[32px] bg-linear-[68deg,#74508F_14.6%,#C65B89_85.4%] px-6 py-14 sm:px-12 lg:rounded-[44px] lg:px-30 lg:py-22">
         <svg
           viewBox="0 0 120 120"
           className="absolute -top-24 -left-32 h-[260px] w-[260px] -rotate-[35deg]"
@@ -397,10 +394,10 @@ function CtaBanner() {
         <span className="relative text-[13px] font-semibold tracking-[3px] text-sq-peach">
           SEE HOW STYLEQ WORKS
         </span>
-        <h2 className="relative w-[760px] max-w-full text-center font-heading text-[44px] leading-[51px] text-white">
+        <h2 className="relative w-full max-w-[760px] text-center font-heading text-[30px] leading-[38px] text-white sm:text-[36px] sm:leading-[44px] lg:text-[44px] lg:leading-[51px]">
           Everything you need to bring it to your team
         </h2>
-        <p className="relative w-[560px] max-w-full text-center text-[16px] leading-[26px] text-white/80">
+        <p className="relative w-full max-w-[560px] text-center text-[16px] leading-[26px] text-white/80">
           Get our brochure: the services we offer, our licensing and insurance,
           how resident and family billing works, and how a risk-free pilot runs.
           No cost to your community, ever.
@@ -408,13 +405,13 @@ function CtaBanner() {
         <div className="relative flex w-full justify-center pt-4">
           <NewsletterForm />
         </div>
-        <p className="relative pt-2 text-[14px] text-white/70">
+        <p className="relative pt-2 text-center text-[14px] text-white/70">
           Prefer to talk first?{" "}
           <a
             href="mailto:chantel@bookstyleq.com"
             className="font-semibold text-white underline-offset-4 transition hover:underline"
           >
-           chantel@bookstyleq.com
+            chantel@bookstyleq.com
           </a>{" "}
           <span className="text-white/40">·</span>{" "}
           <a

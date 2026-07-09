@@ -4,10 +4,12 @@ import { Resend } from "resend";
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 // Configurable via environment variables (see .env.example):
-//   RESEND_API_KEY       required — your Resend API key
-//   NEWSLETTER_FROM      optional — verified sender, e.g. "StyleQ <hello@bookstyleq.com>"
-//   NEXT_PUBLIC_SITE_URL optional — base URL used to build the brochure link
+//   RESEND_API_KEY        required — your Resend API key
+//   NEWSLETTER_FROM       optional — verified sender, e.g. "StyleQ <hello@bookstyleq.com>"
+//   NEWSLETTER_REPLY_TO   optional — where replies land (defaults to chantel@bookstyleq.com)
+//   NEXT_PUBLIC_SITE_URL  optional — base URL used to build the brochure link
 const FROM = process.env.NEWSLETTER_FROM || "StyleQ <chantel@mail.bookstyleq.com>";
+const REPLY_TO = process.env.NEWSLETTER_REPLY_TO || "chantel@bookstyleq.com";
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://bookstyleq.com";
 const BROCHURE_URL = `${SITE_URL}/brochure.pdf`;
 
@@ -45,6 +47,7 @@ export async function POST(request) {
   const { error: sendError } = await resend.emails.send({
     from: FROM,
     to: email,
+    replyTo: REPLY_TO,
     subject: "Your StyleQ brochure is here",
     html: brochureHtml(),
     text: brochureText(),
