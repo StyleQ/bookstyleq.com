@@ -22,9 +22,9 @@ const columns = [
 ];
 
 const socials = [
-  { label: "Instagram", Icon: InstagramIcon },
-  { label: "Facebook", Icon: FacebookIcon },
-  { label: "LinkedIn", Icon: LinkedinIcon },
+  { label: "Instagram", Icon: InstagramIcon, link: "https://www.instagram.com/intostyleq/" },
+  { label: "Facebook", Icon: FacebookIcon, link: "https://www.facebook.com/BookStyleQ" },
+  { label: "LinkedIn", Icon: LinkedinIcon, link: "https://www.linkedin.com/company/styleq" },
 ];
 
 export default function Footer() {
@@ -41,10 +41,10 @@ export default function Footer() {
             senior living communities.
           </p>
           <div className="flex gap-3">
-            {socials.map(({ label, Icon }) => (
+            {socials.map(({ label, Icon, link }) => (
               <a
                 key={label}
-                href="#"
+                href={link}
                 aria-label={label}
                 className="group flex h-[38px] w-[38px] items-center justify-center rounded-full border border-sq-line bg-white transition-all duration-300 hover:-translate-y-0.5 hover:border-sq-rose hover:shadow-sm"
               >
