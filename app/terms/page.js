@@ -140,7 +140,7 @@ const sections = [
         p: "You must not access or use for any commercial purposes any part of the Website or any services or materials available through the Website.",
       },
       {
-        p: "If you wish to make any use of material on the Website other than that set out in this section, please address your request to: support@bookstyleq.com.",
+        p: "If you wish to make any use of material on the Website other than that set out in this section, please address your request to: legal@bookstyleq.com.",
       },
       {
         p: "If you print, copy, modify, download, or otherwise use or provide any other person with access to any part of the Website in breach of the Terms of Use, your right to use the Website will stop immediately and you must, at our option, return or destroy any copies of the materials you have made. No right, title, or interest in or to the Website or any content on the Website is transferred to you, and all rights not expressly granted are reserved by the Company. Any use of the Website not expressly permitted by these Terms of Use is a breach of these Terms of Use and may violate copyright, trademark, and other laws.",
@@ -159,7 +159,7 @@ const sections = [
     heading: "Copyright Infringement",
     blocks: [
       {
-        p: "If you believe that any User Contributions violate your copyright, please send us a notice of copyright infringement via email at support@bookstyleq.com. It is the policy of the Company to terminate the user accounts of repeat infringers.",
+        p: "If you believe that any User Contributions violate your copyright, please send us a notice of copyright infringement via email at legal@bookstyleq.com. It is the policy of the Company to terminate the user accounts of repeat infringers.",
       },
     ],
   },
@@ -359,7 +359,7 @@ const sections = [
         p: "You are responsible for all shipping and handling charges on returned items. You bear the risk of loss during shipment.",
       },
       {
-        p: "Except for any products designated on the Website as final sale or non-returnable, we will accept a return of the products for a refund of your purchase price, less the original shipping and handling costs, provided such return is made within 30 days of shipment with valid proof of purchase and provided such products are returned in their original condition. To return products, you must call (262) 354-2127 or email our Returns Department at support@bookstyleq.com to obtain a Return Merchandise Authorization (“RMA”) number before shipping your product. No returns of any type will be accepted without an RMA number.",
+        p: "Except for any products designated on the Website as final sale or non-returnable, we will accept a return of the products for a refund of your purchase price, less the original shipping and handling costs, provided such return is made within 30 days of shipment with valid proof of purchase and provided such products are returned in their original condition. To return products, you must call (262) 354-2127 or email our Returns Department at legal@bookstyleq.com to obtain a Return Merchandise Authorization (“RMA”) number before shipping your product. No returns of any type will be accepted without an RMA number.",
       },
       {
         p: "Refunds are processed within approximately seven business days of our receipt of your merchandise. Your refund will be credited back to the same payment method used to make the original purchase on the Site. WE OFFER NO REFUNDS ON ANY PRODUCTS DESIGNATED ON THIS SITE AS NON-RETURNABLE.",
@@ -603,10 +603,10 @@ const sections = [
         p: "The Website is operated by StyleQ, LLC, which is located at 4816 N. 27th St. Milwaukee, WI 53209.",
       },
       {
-        p: "All notices of copyright infringement claims should be sent to us at support@bookstyleq.com.",
+        p: "All notices of copyright infringement claims should be sent to us at legal@bookstyleq.com.",
       },
       {
-        p: "All other feedback, comments, requests for technical support, and other communications relating to the Website should be directed to: support@bookstyleq.com.",
+        p: "All other feedback, comments, requests for technical support, and other communications relating to the Website should be directed to: legal@bookstyleq.com.",
       },
     ],
   },

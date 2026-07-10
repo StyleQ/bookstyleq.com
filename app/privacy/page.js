@@ -289,7 +289,7 @@ const sections = [
       { p: "Attn: Chantel / Customer Success" },
       { p: "4816 N. 27th St., Milwaukee, WI 53218" },
       {
-        p: "To register a complaint or concern, please email support@bookstyleq.com.",
+        p: "To register a complaint or concern, please email legal@bookstyleq.com.",
       },
     ],
   },

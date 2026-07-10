@@ -139,21 +139,21 @@ function Hero() {
         className="absolute bottom-4 left-7 hidden lg:block"
         aria-hidden="true"
       >
-        <BrandLeaf className="h-[84px] w-[84px] -rotate-[18deg] text-sq-peach opacity-55" />
+        <BrandLeaf className="h-21 w-21 rotate-[-18deg] text-sq-peach opacity-55" />
       </Parallax>
       <Parallax
         speed={0.17}
         className="absolute bottom-13 left-31 hidden lg:block"
         aria-hidden="true"
       >
-        <BrandLeaf className="h-[52px] w-[52px] rotate-[30deg] text-sq-coral opacity-35" />
+        <BrandLeaf className="h-13 w-13 rotate-30 text-sq-coral opacity-35" />
       </Parallax>
       <div className="relative flex w-full flex-1 flex-col items-start gap-6 lg:gap-7">
         <div className="animate-fade-up">
           <Eyebrow>ON-SITE SALON &amp; SPA FOR SENIOR LIVING</Eyebrow>
         </div>
         <h1
-          className="animate-fade-up font-heading text-[34px] leading-[40px] font-medium text-sq-ink sm:text-[42px] sm:leading-[48px] lg:text-[58px] lg:leading-[65px]"
+          className="animate-fade-up font-heading text-[34px] leading-10 font-medium text-sq-ink sm:text-[42px] sm:leading-12 lg:text-[58px] lg:leading-16.25"
           style={{ animationDelay: "0.08s" }}
         >
           Give every resident a spa day, without asking more of your staff
