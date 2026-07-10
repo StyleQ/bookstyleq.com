@@ -2,7 +2,6 @@ import { Info } from "lucide-react";
 import BrandLeaf from "@/components/BrandLeaf";
 import Footer from "@/components/Footer";
 import NavBar from "@/components/NavBar";
-import Reveal from "@/components/Reveal";
 
 function Eyebrow({ children }) {
   return (
@@ -15,8 +14,35 @@ function Eyebrow({ children }) {
   );
 }
 
+function List({ items }) {
+  return (
+    <ul className="mt-3 flex flex-col gap-2">
+      {items.map((item, i) => (
+        <li key={i} className="flex items-start gap-3">
+          <span className="mt-[10px] h-1.5 w-1.5 shrink-0 rounded-full bg-sq-coral" />
+          <span className="text-[15px] leading-7 text-sq-muted">{item}</span>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+// A block within a section: paragraph, sub-heading, or bullet list.
+function Block({ block }) {
+  if (block.subheading) {
+    return (
+      <h3 className="mt-6 font-heading text-[17px] font-medium text-sq-ink">
+        {block.subheading}
+      </h3>
+    );
+  }
+  if (block.list) return <List items={block.list} />;
+  return <p className="mt-3 text-[15px] leading-7 text-sq-muted">{block.p}</p>;
+}
+
 // Shared layout for text-heavy policy pages (Privacy, Terms).
-// sections: [{ heading, paragraphs?: string[], bullets?: string[] }]
+// sections: [{ heading, paragraphs?: string[], bullets?: string[], blocks?: Block[] }]
+//   Block = { p: string } | { subheading: string } | { list: string[] }
 export default function LegalDoc({
   eyebrow = "LEGAL",
   title,
@@ -24,6 +50,8 @@ export default function LegalDoc({
   intro,
   sections = [],
   email = "chantel@bookstyleq.com",
+  placeholder = true,
+  contact = true,
 }) {
   return (
     <main className="overflow-hidden">
@@ -44,15 +72,18 @@ export default function LegalDoc({
       </section>
 
       <section className="mt-8 bg-white px-6 py-12 md:py-16">
-        <Reveal className="mx-auto max-w-3xl">
+        <div className="mx-auto max-w-3xl">
           <div>
-            <div className="mb-8 flex items-start gap-3 rounded-2xl bg-sq-peach-soft px-5 py-4">
-              <Info className="mt-0.5 h-5 w-5 shrink-0 text-sq-plum opacity-80" />
-              <p className="text-[14px] leading-6 text-sq-plum">
-                This is placeholder content to get the page live. It is not legal
-                advice. Replace it with your reviewed policy before launch.
-              </p>
-            </div>
+            {placeholder && (
+              <div className="mb-8 flex items-start gap-3 rounded-2xl bg-sq-peach-soft px-5 py-4">
+                <Info className="mt-0.5 h-5 w-5 shrink-0 text-sq-plum opacity-80" />
+                <p className="text-[14px] leading-6 text-sq-plum">
+                  This is placeholder content to get the page live. It is not
+                  legal advice. Replace it with your reviewed policy before
+                  launch.
+                </p>
+              </div>
+            )}
 
             {intro && (
               <p className="text-[16px] leading-8 text-sq-muted">{intro}</p>
@@ -64,6 +95,9 @@ export default function LegalDoc({
                   <h2 className="font-heading text-[22px] font-medium text-sq-ink">
                     {i + 1}. {section.heading}
                   </h2>
+                  {section.blocks?.map((block, j) => (
+                    <Block key={j} block={block} />
+                  ))}
                   {section.paragraphs?.map((paragraph, j) => (
                     <p
                       key={j}
@@ -72,36 +106,27 @@ export default function LegalDoc({
                       {paragraph}
                     </p>
                   ))}
-                  {section.bullets && (
-                    <ul className="mt-3 flex flex-col gap-2">
-                      {section.bullets.map((bullet) => (
-                        <li key={bullet} className="flex items-start gap-3">
-                          <span className="mt-[10px] h-1.5 w-1.5 shrink-0 rounded-full bg-sq-coral" />
-                          <span className="text-[15px] leading-7 text-sq-muted">
-                            {bullet}
-                          </span>
-                        </li>
-                      ))}
-                    </ul>
-                  )}
+                  {section.bullets && <List items={section.bullets} />}
                 </div>
               ))}
             </div>
 
-            <div className="mt-10 border-t border-sq-line pt-6">
-              <p className="text-[15px] leading-7 text-sq-muted">
-                Questions? Contact us at{" "}
-                <a
-                  href={`mailto:${email}`}
-                  className="font-semibold text-sq-rose underline-offset-4 transition hover:underline"
-                >
-                  {email}
-                </a>
-                .
-              </p>
-            </div>
+            {contact && (
+              <div className="mt-10 border-t border-sq-line pt-6">
+                <p className="text-[15px] leading-7 text-sq-muted">
+                  Questions? Contact us at{" "}
+                  <a
+                    href={`mailto:${email}`}
+                    className="font-semibold text-sq-rose underline-offset-4 transition hover:underline"
+                  >
+                    {email}
+                  </a>
+                  .
+                </p>
+              </div>
+            )}
           </div>
-        </Reveal>
+        </div>
       </section>
 
       <Footer />
