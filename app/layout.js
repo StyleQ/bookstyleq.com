@@ -1,5 +1,6 @@
 import { Fraunces, Geist } from "next/font/google";
 import "./globals.css";
+import Scripts from "@/components/Scripts";
 
 const geist = Geist({
   variable: "--font-geist-sans",
@@ -102,6 +103,7 @@ export default function RootLayout({ children }) {
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
+        <Scripts />
       </body>
     </html>
   );
