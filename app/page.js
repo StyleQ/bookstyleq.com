@@ -1,5 +1,7 @@
 import Image from "next/image";
+import Link from "next/link";
 import {
+  ArrowRight,
   CalendarCheck,
   CalendarHeart,
   Flower,
@@ -309,7 +311,7 @@ function WhyStyleQ() {
           your community’s rhythm: vetted, insured, and beloved by residents
           from the very first visit.
         </p>
-        <div className="flex items-center gap-3.5 pt-3">
+        <Link href="/about" className="group flex items-center gap-3.5 pt-3">
           <div className="relative h-14 w-14 overflow-hidden rounded-full">
             <Image
               src="/images/chantel.jpeg"
@@ -323,8 +325,12 @@ function WhyStyleQ() {
             <span className="text-[15px] font-semibold text-sq-ink">
               Founded by Chantel Teague
             </span>
+            <span className="flex items-center gap-1.5 text-[14px] font-semibold text-sq-rose">
+              Read her story
+              <ArrowRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-0.5" />
+            </span>
           </div>
-        </div>
+        </Link>
       </Reveal>
       <div className="grid w-full flex-1 grid-cols-1 gap-5 sm:grid-cols-2 lg:gap-6">
         {whyTiles.map(({ Icon, title, desc }, i) => (

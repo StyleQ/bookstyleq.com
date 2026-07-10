@@ -8,6 +8,11 @@ export default function sitemap() {
       priority: 1,
     },
     {
+      url: `${siteUrl}/about`,
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    {
       url: `${siteUrl}/stylist-code-of-conduct`,
       changeFrequency: "yearly",
       priority: 0.5,
