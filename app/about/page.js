@@ -54,21 +54,24 @@ export default function AboutPage() {
         <div className="mx-auto max-w-3xl">
           <div className="space-y-6">
             {/* Portrait, floated so the story wraps around it */}
-            <figure className="float-left mr-6 mb-3 w-40 sm:mr-8 sm:w-44">
-              <div className="relative aspect-square w-full overflow-hidden rounded-tl-[70px] rounded-tr-[18px] rounded-br-[70px] rounded-bl-[18px] ring-4 ring-sq-peach-soft">
+            <figure
+              className="mx-auto mb-6 w-52 sm:float-left sm:mx-0 sm:mr-5 sm:mb-2 sm:w-48"
+              style={{ shapeOutside: "inset(0 round 100px 12px 100px 12px)" }}
+            >
+              <div className="relative aspect-square w-full overflow-hidden rounded-tl-[90px] rounded-tr-[22px] rounded-br-[90px] rounded-bl-[22px] ring-4 ring-sq-peach-soft">
                 <Image
-                  src="/images/chantel.jpeg"
+                  src="/images/chantel@2x.jpg"
                   alt="Chantel Teague, founder of StyleQ"
                   fill
                   priority
-                  sizes="176px"
+                  sizes="192px"
                   className="object-cover"
                 />
               </div>
             </figure>
 
             <div className="flex flex-col gap-1 pt-1">
-              <h2 className="font-heading text-[26px] font-medium text-sq-ink sm:text-[28px]">
+              <h2 className="font-heading text-[26px] font-medium text-sq-ink sm:text-[28px] mt-4">
                 Chantel Teague
               </h2>
               <span className="text-[12px] font-semibold tracking-[2px] text-sq-rose">

@@ -314,7 +314,7 @@ function WhyStyleQ() {
         <Link href="/about" className="group flex items-center gap-3.5 pt-3">
           <div className="relative h-14 w-14 overflow-hidden rounded-full">
             <Image
-              src="/images/chantel.jpeg"
+              src="/images/chantel.jpg"
               alt="Chantel Teague, founder of StyleQ"
               fill
               sizes="56px"
