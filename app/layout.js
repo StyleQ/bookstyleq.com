@@ -1,4 +1,5 @@
 import { Fraunces, Geist } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next"
 import "./globals.css";
 import Scripts from "@/components/Scripts";
 
@@ -104,6 +105,7 @@ export default function RootLayout({ children }) {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
         <Scripts />
+        <Analytics />
       </body>
     </html>
   );
