@@ -44,6 +44,12 @@ next-env.d.ts
 # design reference exports
 .design-ref/
 
+# design-sync build artifacts (durable inputs under .design-sync/ ARE committed)
+/.ds-sync/
+/.ds-src/node_modules/
+/ds-bundle/
+/.design-sync/.cache/
+
 # private ops knowledge — raw research with customer/individual names.
 # NEVER commit to this public repo.
 /docs/private/

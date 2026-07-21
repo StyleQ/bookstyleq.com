@@ -1,0 +1,11 @@
+{
+  "projectId": "333cf28b-cfa2-41df-b7fa-bb315bb6b061",
+  "shape": "package",
+  "offScript": true,
+  "source": "~/Downloads/styleq-brand-guide.html",
+  "globalName": "StyleQ",
+  "pkg": "@styleq/brand",
+  "readmeHeader": ".design-sync/conventions.md",
+  "buildCmd": "node .ds-src/build.mjs",
+  "note": "Hand-authored bundle from a single-file HTML brand guide; not a repo build. Build entry is .ds-src/build.mjs (see NOTES.md). No _ds_sync.json anchor is emitted, so every re-sync re-verifies from scratch."
+}

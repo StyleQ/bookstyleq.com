@@ -1,0 +1,34 @@
+/* StyleQ brand tokens — verbatim from the brand guide. */
+:root {
+  /* Foundation */
+  --sq-color-cream: #FDF8F2;      /* dominant page background (~80%) */
+  --sq-color-ink: #3B3240;        /* Ink Plum — headline text only, never pure black */
+  --sq-color-body: #665E6B;       /* Body Text — paragraphs, captions */
+  --sq-color-white: #FFFFFF;      /* cards, elevated surfaces */
+  --sq-color-hairline: #EDE3D5;   /* hairline borders on cream */
+
+  /* Accent */
+  --sq-color-rose: #C65B89;       /* universal CTA color — every button */
+  --sq-color-plum: #74508F;       /* the closing-moment gradient, once per page */
+  --sq-color-coral: #F68282;      /* warmth — "seen and cared for" resident accent */
+  --sq-color-teal: #579799;       /* trust signals only — never a button */
+  --sq-color-peach: #F6D4AC;      /* secondary warm surface for section breaks */
+
+  /* Typography */
+  --sq-font-display: 'Geist', system-ui, sans-serif;   /* logo wordmark, labels */
+  --sq-font-headline: 'Fraunces', Georgia, serif;      /* headlines only */
+  --sq-font-body: 'Geist', system-ui, sans-serif;      /* body copy, buttons */
+
+  /* Type scale */
+  --sq-text-h1: 56px;
+  --sq-text-h2: 40px;
+  --sq-text-h3: 26px;
+  --sq-text-body: 16px;
+  --sq-text-small: 13px;
+  --sq-text-eyebrow: 11px;
+
+  /* Radius */
+  --sq-radius-pill: 100px;
+  --sq-radius-card: 16px;
+  --sq-radius-sm: 10px;
+}
