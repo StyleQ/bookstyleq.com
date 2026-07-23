@@ -31,6 +31,11 @@ export default function sitemap() {
       priority: 0.7,
     })),
     {
+      url: `${siteUrl}/meet-our-stylists`,
+      changeFrequency: "monthly",
+      priority: 0.7,
+    },
+    {
       url: `${siteUrl}/stylist-code-of-conduct`,
       changeFrequency: "yearly",
       priority: 0.5,

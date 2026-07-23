@@ -132,7 +132,7 @@ export default function NavBar() {
           </div>
         ))}
         <AnchorLink
-          href="/#contact"
+          href="/meet-our-stylists"
           className="text-[15px] text-sq-ink transition-colors hover:text-sq-rose"
         >
           Meet our Stylists
@@ -177,7 +177,7 @@ export default function NavBar() {
             </div>
           ))}
           <AnchorLink
-            href="/#contact"
+            href="/meet-our-stylists"
             onClick={close}
             className="rounded-xl px-3 py-3 text-[16px] text-sq-ink transition-colors hover:bg-sq-peach-soft"
           >

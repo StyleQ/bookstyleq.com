@@ -76,7 +76,7 @@ const features = [
     ],
     buttons: [
       { label: "Book a Call", href: BOOK_HREF, variant: "primary" },
-      { label: "Our Stylists", href: "/#contact", variant: "outline" },
+      { label: "Our Stylists", href: "/meet-our-stylists", variant: "outline" },
     ],
   },
   {
