@@ -67,12 +67,12 @@ function FaqItem({ q, a, open, onToggle, id }) {
   );
 }
 
-export default function FaqAccordion() {
+export default function FaqAccordion({ items = faqs }) {
   const [openIndex, setOpenIndex] = useState(0);
 
   return (
     <div className="flex w-full max-w-[920px] flex-col gap-3.5">
-      {faqs.map((faq, i) => (
+      {items.map((faq, i) => (
         <FaqItem
           key={faq.q}
           id={`faq-${i}`}

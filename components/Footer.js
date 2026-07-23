@@ -4,23 +4,22 @@ import { Mail, MapPin, Phone } from "lucide-react";
 import { FacebookIcon, InstagramIcon, LinkedinIcon } from "./SocialIcons";
 import AnchorLink from "./AnchorLink";
 
-// TODO: repoint column links to dedicated routes as those pages ship.
 const columns = [
   {
     title: "Our Services",
     items: [
-      { label: "Hair Styling", href: "/#services" },
-      { label: "Manicures & Nail Care", href: "/#services" },
-      { label: "Gentle Facials", href: "/#services" },
-      { label: "Grooming", href: "/#services" },
+      { label: "Hair Styling", href: "/services/hair-styling" },
+      { label: "Manicures & Nail Care", href: "/services/manicures-nail-care" },
+      { label: "Gentle Facials", href: "/services/gentle-facials" },
+      { label: "Grooming", href: "/services/grooming" },
     ],
   },
   {
     title: "Who We Serve",
     items: [
-      { label: "Assisted Living Facilities", href: "/#difference" },
-      { label: "Skilled Nursing Facilities", href: "/#difference" },
-      { label: "Independent Living Facilities", href: "/#difference" },
+      { label: "Assisted Living Facilities", href: "/who-we-serve/assisted-living" },
+      { label: "Skilled Nursing Facilities", href: "/who-we-serve/skilled-nursing" },
+      { label: "Independent Living Facilities", href: "/who-we-serve/independent-living" },
     ],
   },
   {

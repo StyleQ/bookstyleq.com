@@ -1,8 +1,17 @@
 import Image from "next/image";
-import { CircleCheck, CircleX, Mail, Phone } from "lucide-react";
+import { Mail, Phone } from "lucide-react";
 import AnchorLink from "@/components/AnchorLink";
 import BrandLeaf from "@/components/BrandLeaf";
 import FaqAccordion from "@/components/FaqAccordion";
+import {
+  PAD_X,
+  Eyebrow,
+  EyebrowLeaf,
+  PrimaryButton,
+  OutlineButton,
+  CheckItem,
+  CrossItem,
+} from "@/components/ui";
 import Footer from "@/components/Footer";
 import InkBloom from "@/components/InkBloom";
 import Marquee from "@/components/Marquee";
@@ -16,102 +25,6 @@ import Threads from "@/components/Threads";
 const BOOK_HREF = "/#contact";
 const BROCHURE_HREF = "/brochure.pdf";
 const PHONE_HREF = "tel:+14142061690";
-
-// Shared horizontal padding so every section lines up on the same rails.
-const PAD_X = "px-6 md:px-12 lg:px-30";
-
-/* ---------- small building blocks ---------- */
-
-function EyebrowLeaf({ children, className = "text-sq-coral" }) {
-  return (
-    <div className="flex items-center gap-2.5">
-      <BrandLeaf className={`h-4 w-4 ${className}`} />
-      <span className="text-[13px] font-semibold tracking-[2.4px] text-sq-rose">
-        {children}
-      </span>
-    </div>
-  );
-}
-
-function Eyebrow({ children, className = "text-sq-rose" }) {
-  return (
-    <span className={`text-[13px] font-semibold tracking-[3px] ${className}`}>
-      {children}
-    </span>
-  );
-}
-
-function PrimaryButton({
-  href,
-  external,
-  icon: Icon,
-  children,
-  className = "",
-}) {
-  const cls = `inline-flex items-center justify-center gap-2 rounded-full bg-sq-rose px-[30px] py-[15px] text-[15px] font-medium text-white shadow-sm transition-all duration-300 hover:bg-sq-rose/90 hover:shadow-lg hover:shadow-sq-rose/25 ${className}`;
-  const inner = (
-    <>
-      {Icon && <Icon className="h-4 w-4" />}
-      {children}
-    </>
-  );
-  return external ? (
-    <a href={href} className={cls}>
-      {inner}
-    </a>
-  ) : (
-    <AnchorLink href={href} className={cls}>
-      {inner}
-    </AnchorLink>
-  );
-}
-
-function OutlineButton({
-  href,
-  external,
-  icon: Icon,
-  children,
-  className = "",
-}) {
-  const cls = `inline-flex items-center justify-center gap-2 rounded-full border-[1.5px] border-sq-peach px-[30px] py-[15px] text-[15px] font-medium text-sq-ink transition-all duration-300 hover:border-sq-rose hover:text-sq-rose ${className}`;
-  const inner = (
-    <>
-      {Icon && <Icon className="h-4 w-4" />}
-      {children}
-    </>
-  );
-  return external ? (
-    <a href={href} className={cls}>
-      {inner}
-    </a>
-  ) : (
-    <AnchorLink href={href} className={cls}>
-      {inner}
-    </AnchorLink>
-  );
-}
-
-function CheckItem({ children }) {
-  return (
-    <div className="flex items-start gap-2.5">
-      <CircleCheck className="mt-[2px] h-[18px] w-[18px] shrink-0 text-sq-rose" />
-      <span className="text-[15px] leading-[22px] font-medium text-sq-ink">
-        {children}
-      </span>
-    </div>
-  );
-}
-
-function CrossItem({ children }) {
-  return (
-    <div className="flex items-start gap-2.5">
-      <CircleX className="mt-[2px] h-[17px] w-[17px] shrink-0 text-[#C9C2CE]" />
-      <span className="text-[15px] leading-[22px] text-sq-muted">
-        {children}
-      </span>
-    </div>
-  );
-}
 
 /* ---------- content data ---------- */
 
@@ -427,12 +340,12 @@ function FeatureBlock({
   return (
     <section
       id={id}
-      className={`relative flex items-center overflow-hidden ${PAD_X} py-16 lg:py-32`}
+      className={`relative flex items-center overflow-hidden ${PAD_X} py-16 lg:py-36`}
     >
       {/* Cream panel sitting behind the copy, ending at the center of the image. */}
       <div
         aria-hidden="true"
-        className={`pointer-events-none absolute top-1/2 hidden h-[520px] -translate-y-1/2 bg-sq-hero-cream lg:block ${
+        className={`pointer-events-none absolute top-1/2 hidden h-130 -translate-y-1/2 bg-sq-hero-cream lg:block ${
           reverse
             ? "right-0 left-[350px]"
             : "right-[350px] left-0"

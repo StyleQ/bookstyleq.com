@@ -6,25 +6,22 @@ import Link from "next/link";
 import { ChevronDown, Menu, X } from "lucide-react";
 import AnchorLink from "./AnchorLink";
 
-// TODO: repoint dropdown items to their dedicated routes (e.g. /services/hair-styling,
-// /who-we-serve/assisted-living) once those pages are built. For now they scroll to
-// on-page anchors so no link 404s.
 const menus = [
   {
     label: "Our Services",
     items: [
-      { label: "Hair Styling", href: "/#services" },
-      { label: "Manicures & Nail Care", href: "/#services" },
-      { label: "Gentle Facials", href: "/#services" },
-      { label: "Grooming", href: "/#services" },
+      { label: "Hair Styling", href: "/services/hair-styling" },
+      { label: "Manicures & Nail Care", href: "/services/manicures-nail-care" },
+      { label: "Gentle Facials", href: "/services/gentle-facials" },
+      { label: "Grooming", href: "/services/grooming" },
     ],
   },
   {
     label: "Who We Serve",
     items: [
-      { label: "Assisted Living Facilities", href: "/#difference" },
-      { label: "Skilled Nursing Facilities", href: "/#difference" },
-      { label: "Independent Living Facilities", href: "/#difference" },
+      { label: "Assisted Living Facilities", href: "/who-we-serve/assisted-living" },
+      { label: "Skilled Nursing Facilities", href: "/who-we-serve/skilled-nursing" },
+      { label: "Independent Living Facilities", href: "/who-we-serve/independent-living" },
     ],
   },
 ];
