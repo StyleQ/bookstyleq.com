@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import posthog from "posthog-js";
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -30,6 +31,8 @@ export default function NewsletterForm() {
         body: JSON.stringify({ email: trimmed }),
       });
       if (!res.ok) throw new Error("Request failed");
+      posthog.identify(trimmed);
+      posthog.capture("newsletter_subscribed", { source: "footer" });
       setStatus("success");
       setMessage("You’re on the list. Your brochure is on its way to your inbox.");
       setEmail("");

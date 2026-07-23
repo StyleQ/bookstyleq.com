@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { X, Mail, CircleCheck, Clock } from "lucide-react";
 import BrandLeaf from "@/components/BrandLeaf";
+import posthog from "posthog-js";
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -74,6 +75,8 @@ export default function BrochureModal({ onClose }) {
         body: JSON.stringify({ email: trimmed }),
       });
       if (!res.ok) throw new Error("Request failed");
+      posthog.identify(trimmed);
+      posthog.capture("brochure_requested", { source: "modal" });
       setSentTo(trimmed);
       setStatus("success");
     } catch {

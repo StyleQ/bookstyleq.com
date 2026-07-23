@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
+import { getPostHogClient } from "@/lib/posthog-server";
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -82,6 +83,17 @@ export async function POST(request) {
       contactError.name,
       contactError.message,
     );
+  }
+
+  const ph = getPostHogClient();
+  if (ph) {
+    ph.identify({ distinctId: email, properties: { email } });
+    ph.capture({
+      distinctId: email,
+      event: "brochure_email_sent",
+      properties: {},
+    });
+    await ph.flush();
   }
 
   return NextResponse.json({ ok: true });

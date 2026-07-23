@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
+import { getPostHogClient } from "@/lib/posthog-server";
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -100,6 +101,27 @@ ${rows
       { ok: false, error: "Could not send your request. Please try again." },
       { status: 502 },
     );
+  }
+
+  const distinctId =
+    request.headers.get("X-POSTHOG-DISTINCT-ID") || email;
+  const ph = getPostHogClient();
+  if (ph) {
+    ph.identify({
+      distinctId: email,
+      properties: { name, facility: facility || undefined },
+    });
+    ph.capture({
+      distinctId,
+      event: "book_a_call_received",
+      properties: {
+        has_phone: !!phone,
+        has_facility: !!facility,
+        best_time: bestTime || null,
+        $session_id: request.headers.get("X-POSTHOG-SESSION-ID") || undefined,
+      },
+    });
+    await ph.flush();
   }
 
   return NextResponse.json({ ok: true });

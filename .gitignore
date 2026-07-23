@@ -53,3 +53,4 @@ next-env.d.ts
 # private ops knowledge — raw research with customer/individual names.
 # NEVER commit to this public repo.
 /docs/private/
+.env.local

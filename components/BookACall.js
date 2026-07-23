@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { Check, Mail, Phone } from "lucide-react";
 import { PAD_X, Eyebrow } from "@/components/ui";
+import posthog from "posthog-js";
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const TIMES = ["Morning", "Afternoon", "Evening"];
@@ -62,12 +63,24 @@ export default function BookACall() {
     setStatus("submitting");
     setMessage("");
     try {
+      const headers = { "Content-Type": "application/json" };
+      try {
+        headers["X-POSTHOG-DISTINCT-ID"] = posthog.get_distinct_id();
+        const sessionId = posthog.get_session_id();
+        if (sessionId) headers["X-POSTHOG-SESSION-ID"] = sessionId;
+      } catch {}
       const res = await fetch("/api/book-a-call", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers,
         body: JSON.stringify({ ...form, name, email }),
       });
       if (!res.ok) throw new Error("Request failed");
+      posthog.identify(email, { name, facility: form.facility || undefined });
+      posthog.capture("book_a_call_submitted", {
+        has_phone: !!form.phone.trim(),
+        has_facility: !!form.facility.trim(),
+        best_time: form.bestTime || null,
+      });
       setSubmittedName(name.split(" ")[0]);
       setStatus("success");
     } catch {
