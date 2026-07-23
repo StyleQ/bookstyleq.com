@@ -87,7 +87,10 @@ void main() {
   col = mix(col, uCore, smoothstep(0.55, 0.96, density) * smoothstep(0.4, 0.9, region));
 
   float alpha = density * uIntensity;
-  gl_FragColor = vec4(col, alpha);
+  // Premultiplied alpha: the canvas composites premultiplied (see Renderer +
+  // blendFunc below), so multiply the color by alpha here. Straight alpha here
+  // washes out in Safari, which composites premultiplied strictly.
+  gl_FragColor = vec4(col * alpha, alpha);
 }
 `;
 
@@ -120,11 +123,13 @@ export default function InkBloom({
       typeof window !== "undefined" &&
       window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-    const renderer = new Renderer({ alpha: true });
+    const renderer = new Renderer({ alpha: true, premultipliedAlpha: true });
     const gl = renderer.gl;
     gl.clearColor(0, 0, 0, 0);
     gl.enable(gl.BLEND);
-    gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
+    // Premultiplied "over" blending, paired with the premultiplied color the
+    // shader outputs. Renders identically in Chrome and Safari.
+    gl.blendFunc(gl.ONE, gl.ONE_MINUS_SRC_ALPHA);
     gl.canvas.style.display = "block";
     container.appendChild(gl.canvas);
 
