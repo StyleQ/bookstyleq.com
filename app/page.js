@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Mail, Phone } from "lucide-react";
+import { Mail } from "lucide-react";
 import AnchorLink from "@/components/AnchorLink";
 import BrandLeaf from "@/components/BrandLeaf";
 import FaqAccordion from "@/components/FaqAccordion";
@@ -22,9 +22,8 @@ import SmoothScroll from "@/components/SmoothScroll";
 import Strands from "@/components/Strands";
 import Threads from "@/components/Threads";
 
-const BOOK_HREF = "/#contact";
+const BOOK_HREF = "/book-a-call";
 const BROCHURE_HREF = "/brochure.pdf";
-const PHONE_HREF = "tel:+14142061690";
 
 /* ---------- content data ---------- */
 
@@ -77,7 +76,7 @@ const features = [
     ],
     buttons: [
       { label: "Book a Call", href: BOOK_HREF, variant: "primary" },
-      { label: "Our Stylists", href: BOOK_HREF, variant: "outline" },
+      { label: "Our Stylists", href: "/#contact", variant: "outline" },
     ],
   },
   {
@@ -648,13 +647,12 @@ function CtaBanner() {
           begins. No cost to your community, ever.
         </p>
         <div className="relative z-10 flex flex-col items-center gap-4 pt-4 sm:flex-row">
-          <a
-            href={PHONE_HREF}
+          <AnchorLink
+            href={BOOK_HREF}
             className="inline-flex items-center justify-center gap-2 rounded-full bg-white px-9 py-[18px] text-[15px] font-semibold text-sq-plum shadow-sm transition-all duration-300 hover:shadow-lg hover:shadow-black/10"
           >
-            <Phone className="h-4 w-4" />
             Book a Call
-          </a>
+          </AnchorLink>
           <a
             href={BROCHURE_HREF}
             className="inline-flex items-center justify-center gap-2 rounded-full border-[1.5px] border-white/55 px-9 py-[18px] text-[15px] font-semibold text-white transition-all duration-300 hover:border-white"

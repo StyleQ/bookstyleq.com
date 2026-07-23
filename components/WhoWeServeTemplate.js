@@ -9,7 +9,7 @@ import CtaBand from "@/components/CtaBand";
 import FaqAccordion from "@/components/FaqAccordion";
 import { PAD_X, Eyebrow, PrimaryButton, OutlineButton } from "@/components/ui";
 
-const BOOK_HREF = "/#contact";
+const BOOK_HREF = "/book-a-call";
 const BENEFIT_ICONS = [Sparkles, ShieldCheck, Heart];
 
 const sectionCls = `flex flex-col items-center gap-4 border-t border-sq-line text-center ${PAD_X} py-16 lg:py-24`;

@@ -138,7 +138,7 @@ export default function NavBar() {
           Meet our Stylists
         </AnchorLink>
         <AnchorLink
-          href="/#contact"
+          href="/book-a-call"
           className="rounded-full bg-sq-rose px-[22px] py-[10px] text-[14px] font-medium text-white shadow-sm transition-all duration-300 hover:bg-sq-rose/90 hover:shadow-md hover:shadow-sq-rose/25"
         >
           Book a Call
@@ -184,7 +184,7 @@ export default function NavBar() {
             Meet our Stylists
           </AnchorLink>
           <AnchorLink
-            href="/#contact"
+            href="/book-a-call"
             onClick={close}
             className="mt-2 rounded-full bg-sq-rose px-6 py-3.5 text-center text-[15px] font-medium text-white shadow-sm"
           >

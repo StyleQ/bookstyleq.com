@@ -9,7 +9,7 @@ export default function CtaBand({
   heading,
   sub,
   buttonLabel = "Book a Call",
-  href = "/#contact",
+  href = "/book-a-call",
 }) {
   return (
     <section className="bg-linear-[68deg,#74508F_15%,#C65B89_85%]">

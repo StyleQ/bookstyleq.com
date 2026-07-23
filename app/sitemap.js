@@ -15,6 +15,11 @@ export default function sitemap() {
       changeFrequency: "monthly",
       priority: 0.8,
     },
+    {
+      url: `${siteUrl}/book-a-call`,
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
     ...serviceSlugs.map((slug) => ({
       url: `${siteUrl}/services/${slug}`,
       changeFrequency: "monthly",

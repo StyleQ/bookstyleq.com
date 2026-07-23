@@ -6,7 +6,7 @@ import BrandLeaf from "@/components/BrandLeaf";
 import CtaBand from "@/components/CtaBand";
 import { PAD_X, Eyebrow, PrimaryButton, OutlineButton } from "@/components/ui";
 
-const BOOK_HREF = "/#contact";
+const BOOK_HREF = "/book-a-call";
 
 // Sections identical across every service.
 const COMFORT = {
