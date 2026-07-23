@@ -58,7 +58,7 @@ const features = [
     ],
     buttons: [
       { label: "Book a Call", href: BOOK_HREF, variant: "primary" },
-      { label: "Our Services", href: "/#services", variant: "outline" },
+      { label: "Our Services", href: "/services/hair-styling", variant: "outline" },
     ],
   },
   {
@@ -167,29 +167,26 @@ const testimonials = [
   {
     quote:
       "“StyleQ afternoons are the highlight of our activity calendar. Residents line up early, hair done, nails polished, spirits lifted for days.”",
-    initials: "DW",
+    avatar: "/images/avatar-dana.jpg",
     name: "Dana Whitfield",
     role: "Activity Director, Maplewood Senior Living",
     color: "text-sq-teal",
-    avatarBg: "bg-[#EAF3F3]",
   },
   {
     quote:
       "“Mom gets her hair set every other Friday, just like she did for fifty years. When I visit, she’s glowing. I can’t put a price on that.”",
-    initials: "RA",
+    avatar: "/images/avatar-renee.jpg",
     name: "Renee Alvarez",
     role: "Daughter of a resident",
     color: "text-sq-coral",
-    avatarBg: "bg-[#FDEEEA]",
   },
   {
     quote:
       "“They treat me like a lady, not a task on a chart. It’s my little spa day, and I have never once missed it.”",
-    initials: "MH",
+    avatar: "/images/avatar-margaret.jpg",
     name: "Margaret “Peggy” Holloway",
     role: "Resident, age 87",
     color: "text-sq-plum",
-    avatarBg: "bg-[#F1EBF6]",
   },
 ];
 
@@ -554,7 +551,7 @@ function Testimonials() {
       </Reveal>
       <div className="grid w-full grid-cols-1 gap-7 lg:grid-cols-3">
         {testimonials.map(
-          ({ quote, initials, name, role, color, avatarBg }, i) => (
+          ({ quote, avatar, name, role, color }, i) => (
             <Reveal key={name} delay={i * 90} className="flex">
               <div className="flex w-full flex-col items-start gap-6 rounded-3xl border border-sq-line bg-white p-9 transition duration-300 hover:border-transparent hover:shadow-xl hover:shadow-sq-plum/5">
                 <div
@@ -566,12 +563,14 @@ function Testimonials() {
                   {quote}
                 </p>
                 <div className="flex items-center gap-3">
-                  <div
-                    className={`flex h-11 w-11 items-center justify-center rounded-full ${avatarBg}`}
-                  >
-                    <span className={`text-[14px] font-semibold ${color}`}>
-                      {initials}
-                    </span>
+                  <div className="relative h-11 w-11 shrink-0 overflow-hidden rounded-full">
+                    <Image
+                      src={avatar}
+                      alt={name}
+                      fill
+                      sizes="44px"
+                      className="object-cover"
+                    />
                   </div>
                   <div className="flex flex-col gap-0.5">
                     <span className="text-[15px] font-semibold text-sq-ink">
