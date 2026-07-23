@@ -31,9 +31,15 @@ export default function AnchorLink({ href, onClick, children, ...props }) {
     if (!el) return; // let default navigation handle cross-page links
 
     e.preventDefault();
-    // No `behavior` here: follows the CSS `scroll-behavior`, which we gate on
-    // prefers-reduced-motion in globals.css.
-    el.scrollIntoView({ block: "start" });
+    // When Lenis is driving the page (see SmoothScroll), scroll through it so
+    // the anchor jump shares the same smooth easing, offset for the sticky
+    // header. Otherwise fall back to native, which follows the CSS
+    // `scroll-behavior` + `scroll-padding-top` (both gated on reduced-motion).
+    if (window.lenis) {
+      window.lenis.scrollTo(el, { offset: -64 });
+    } else {
+      el.scrollIntoView({ block: "start" });
+    }
     // Keep the URL in sync without a native jump or history spam.
     window.history.replaceState(null, "", `#${id}`);
   }

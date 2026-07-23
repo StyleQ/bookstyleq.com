@@ -13,6 +13,7 @@
   --color-sq-teal: #579799;
   --color-sq-cream: #fdf8f2;
   --color-sq-peach-soft: #fbeedc;
+  --color-sq-hero-cream: #f7eedf;
   --color-sq-ink: #3b3240;
   --color-sq-muted: #7c7382;
   --color-sq-line: #f0e7db;
@@ -22,9 +23,26 @@ body {
   @apply bg-sq-cream font-sans text-sq-ink antialiased;
 }
 
+/* Tailwind v4 Preflight leaves <button>/[role=button] at the browser default
+   cursor. Give every interactive control a consistent pointer. */
+@layer base {
+  button:not(:disabled),
+  [role="button"]:not(:disabled),
+  a[href],
+  label[for],
+  summary {
+    cursor: pointer;
+  }
+}
+
 @media (prefers-reduced-motion: no-preference) {
   html {
     scroll-behavior: smooth;
+    /* Section snapping is handled by Lenis (see components/SmoothScroll.js) so
+       it can share the smooth-scroll easing. This offset only applies to the
+       native fallback (reduced-motion / no-JS): it keeps in-page #anchor jumps
+       clear of the sticky header. */
+    scroll-padding-top: 4rem;
   }
 
   @keyframes sq-fade-up {
@@ -41,5 +59,18 @@ body {
   .animate-fade-up {
     opacity: 0;
     animation: sq-fade-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+
+  @keyframes sq-marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  .animate-marquee {
+    animation: sq-marquee 38s linear infinite;
   }
 }

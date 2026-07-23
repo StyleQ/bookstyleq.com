@@ -348,7 +348,7 @@ export default function StylistCodeOfConduct() {
           </p>
           <a
             href="mailto:Chantel@bookstyleq.com"
-            className="mt-1 inline-flex items-center gap-2 rounded-full bg-white px-7 py-3.5 text-[15px] font-semibold text-sq-plum shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-black/10"
+            className="mt-1 inline-flex items-center gap-2 rounded-full bg-white px-7 py-3.5 text-[15px] font-semibold text-sq-plum shadow-sm transition-all duration-300 hover:shadow-lg hover:shadow-black/10"
           >
             <Mail className="h-4 w-4" />
             Chantel@bookstyleq.com

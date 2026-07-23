@@ -72,7 +72,7 @@ const jsonLd = {
   url: siteUrl,
   image: `${siteUrl}/opengraph-image`,
   email: "chantel@bookstyleq.com",
-  telephone: "+1-262-345-2127",
+  telephone: "+1-414-206-1690",
   areaServed: "US",
   priceRange: "$$",
   slogan: "Beauty in every chapter.",

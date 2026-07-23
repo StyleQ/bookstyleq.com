@@ -1,3 +1,6 @@
+import { serviceSlugs } from "@/lib/servicesData";
+import { audienceSlugs } from "@/lib/whoWeServeData";
+
 const siteUrl = "https://bookstyleq.com";
 
 export default function sitemap() {
@@ -6,6 +9,31 @@ export default function sitemap() {
       url: siteUrl,
       changeFrequency: "monthly",
       priority: 1,
+    },
+    {
+      url: `${siteUrl}/about`,
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    {
+      url: `${siteUrl}/book-a-call`,
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    ...serviceSlugs.map((slug) => ({
+      url: `${siteUrl}/services/${slug}`,
+      changeFrequency: "monthly",
+      priority: 0.7,
+    })),
+    ...audienceSlugs.map((slug) => ({
+      url: `${siteUrl}/who-we-serve/${slug}`,
+      changeFrequency: "monthly",
+      priority: 0.7,
+    })),
+    {
+      url: `${siteUrl}/meet-our-stylists`,
+      changeFrequency: "monthly",
+      priority: 0.7,
     },
     {
       url: `${siteUrl}/stylist-code-of-conduct`,
