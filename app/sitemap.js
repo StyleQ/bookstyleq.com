@@ -11,11 +11,6 @@ export default function sitemap() {
       priority: 1,
     },
     {
-      url: `${siteUrl}/about`,
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
       url: `${siteUrl}/book-a-call`,
       changeFrequency: "monthly",
       priority: 0.9,
