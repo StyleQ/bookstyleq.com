@@ -1,23 +1,41 @@
+import Image from "next/image";
 import Link from "next/link";
+import { Mail, MapPin, Phone } from "lucide-react";
 import { FacebookIcon, InstagramIcon, LinkedinIcon } from "./SocialIcons";
+import AnchorLink from "./AnchorLink";
 
+// TODO: repoint column links to dedicated routes as those pages ship.
 const columns = [
   {
-    title: "SERVICES",
+    title: "Our Services",
     items: [
-      "Hair styling",
-      "Manicures & nails",
-      "Gentle facials",
-      "Grooming & barbering",
+      { label: "Hair Styling", href: "/#services" },
+      { label: "Manicures & Nail Care", href: "/#services" },
+      { label: "Gentle Facials", href: "/#services" },
+      { label: "Grooming", href: "/#services" },
     ],
   },
   {
-    title: "COMPANY",
-    items: ["For facilities", "Careers", "Journal"],
+    title: "Who We Serve",
+    items: [
+      { label: "Assisted Living Facilities", href: "/#difference" },
+      { label: "Skilled Nursing Facilities", href: "/#difference" },
+      { label: "Independent Living Facilities", href: "/#difference" },
+    ],
   },
   {
-    title: "CONTACT",
-    items: ["chantel@bookstyleq.com", "(262) 345-2127", "Serving Wisconsin and more."],
+    title: "Resources",
+    items: [
+      { label: "Blog", href: "/#faq" },
+      { label: "Guides", href: "/#faq" },
+    ],
+  },
+  {
+    title: "Company",
+    items: [
+      { label: "Careers", href: "/#contact" },
+      { label: "Partnerships", href: "/#contact" },
+    ],
   },
 ];
 
@@ -29,47 +47,91 @@ const socials = [
 
 export default function Footer() {
   return (
-    <footer className="flex flex-col gap-10 bg-sq-peach-soft px-6 pt-14 pb-10 md:gap-12 md:px-12 lg:px-30 lg:pt-18">
-      <div className="flex w-full flex-col gap-10 md:flex-row md:gap-16 lg:gap-20">
-        <div className="flex w-full flex-col gap-4 md:w-[320px] md:shrink-0 lg:w-[360px]">
-          <Link href="/" className="font-heading text-[30px] font-semibold">
-            <span className="text-sq-ink">Style</span>
-            <span className="text-sq-rose">Q</span>
-          </Link>
+    <footer className="flex flex-col gap-11 bg-sq-peach-soft px-6 pt-16 pb-11 md:px-12 lg:px-30 lg:pt-19">
+      {/* Link columns */}
+      <div className="grid grid-cols-2 gap-x-8 gap-y-10 sm:grid-cols-4 lg:gap-10">
+        {columns.map(({ title, items }) => (
+          <div key={title} className="flex flex-col gap-4">
+            <div className="text-[16px] font-semibold text-sq-ink">{title}</div>
+            {items.map(({ label, href }) => (
+              <AnchorLink
+                key={label}
+                href={href}
+                className="text-[15px] text-sq-muted transition-colors hover:text-sq-rose"
+              >
+                {label}
+              </AnchorLink>
+            ))}
+          </div>
+        ))}
+      </div>
+
+      <div className="h-px w-full bg-[#E7D8C6]" />
+
+      {/* Brand + contact */}
+      <div className="flex w-full flex-col gap-10 md:flex-row md:justify-between md:gap-16">
+        <div className="flex max-w-[400px] flex-col items-start gap-[18px]">
+          <Image
+            src="/images/styleq-logo.png"
+            alt="StyleQ"
+            width={500}
+            height={165}
+            className="h-[38px] w-auto"
+          />
           <p className="text-[14px] leading-[22px] text-sq-muted">
-            Spa-quality beauty and grooming services, delivered with dignity to
-            senior living communities.
+            Fully managed on-site salon and spa for senior living communities. We
+            bring licensed, elder care trained stylists and handle everything,
+            from scheduling to billing.
           </p>
-          <div className="flex gap-3">
+          <div className="flex gap-3 pt-1">
             {socials.map(({ label, Icon, link }) => (
               <a
                 key={label}
                 href={link}
                 aria-label={label}
-                className="group flex h-[38px] w-[38px] items-center justify-center rounded-full border border-sq-line bg-white transition-all duration-300 hover:-translate-y-0.5 hover:border-sq-rose hover:shadow-sm"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex h-[38px] w-[38px] items-center justify-center rounded-full border border-[#E7D8C6] bg-white transition-all duration-300 hover:border-sq-rose hover:shadow-sm"
               >
                 <Icon className="h-4 w-4 text-sq-plum transition-colors group-hover:text-sq-rose" />
               </a>
             ))}
           </div>
         </div>
-        <div className="grid flex-1 grid-cols-2 gap-8 sm:grid-cols-3">
-          {columns.map(({ title, items }) => (
-            <div key={title} className="flex flex-col gap-3.5">
-              <div className="text-[13px] font-semibold tracking-[2px] text-sq-ink">
-                {title}
-              </div>
-              {items.map((item) => (
-                <div key={item} className="text-[14px] text-sq-muted">
-                  {item}
-                </div>
-              ))}
+
+        <div className="flex flex-col gap-3.5 md:items-end">
+          <a
+            href="mailto:hello@bookstyleq.com"
+            className="group flex items-center gap-2.5 text-[15px] text-sq-ink"
+          >
+            <Mail className="h-4 w-4 text-sq-rose" />
+            <span className="transition-colors group-hover:text-sq-rose">
+              hello@bookstyleq.com
+            </span>
+          </a>
+          <a
+            href="tel:+14142061690"
+            className="group flex items-center gap-2.5 text-[15px] text-sq-ink"
+          >
+            <Phone className="h-4 w-4 text-sq-rose" />
+            <span className="transition-colors group-hover:text-sq-rose">
+              (414) 206-1690
+            </span>
+          </a>
+          <div className="flex items-start gap-2.5 text-[15px] text-sq-ink md:text-right">
+            <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-sq-rose" />
+            <div className="flex flex-col md:items-end">
+              <span>6969 N Port Washington Rd, STE 150B</span>
+              <span>Glendale, WI 53217</span>
             </div>
-          ))}
+          </div>
         </div>
       </div>
-      <div className="h-px w-full bg-sq-line" />
-      <div className="flex w-full flex-col gap-4 md:flex-row md:items-center md:justify-between">
+
+      <div className="h-px w-full bg-[#E7D8C6]" />
+
+      {/* Bottom bar */}
+      <div className="flex w-full flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div className="text-[13px] text-sq-muted">
           © 2026 StyleQ. Beauty in every chapter.
         </div>
@@ -80,10 +142,7 @@ export default function Footer() {
           >
             Stylist Code of Conduct
           </Link>
-          <Link
-            href="/privacy"
-            className="transition-colors hover:text-sq-rose"
-          >
+          <Link href="/privacy" className="transition-colors hover:text-sq-rose">
             Privacy
           </Link>
           <Link href="/terms" className="transition-colors hover:text-sq-rose">

@@ -133,7 +133,7 @@ export default function AboutPage() {
           </div>
           <Link
             href="/#contact"
-            className="shrink-0 rounded-full bg-white px-7 py-3.5 text-[15px] font-semibold text-sq-plum shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-black/10"
+            className="shrink-0 rounded-full bg-white px-7 py-3.5 text-[15px] font-semibold text-sq-plum shadow-sm transition-all duration-300 hover:shadow-lg hover:shadow-black/10"
           >
             Get the Brochure
           </Link>
