@@ -1,8 +1,10 @@
 import Image from "next/image";
+import { CircleCheck } from "lucide-react";
 import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
 import Reveal from "@/components/Reveal";
 import BrandLeaf from "@/components/BrandLeaf";
+import HeroLeafCluster from "@/components/HeroLeafCluster";
 import CtaBand from "@/components/CtaBand";
 import { PAD_X, Eyebrow, PrimaryButton, OutlineButton } from "@/components/ui";
 
@@ -111,12 +113,9 @@ export default function ServicePageTemplate({ service }) {
         >
           <BrandLeaf
             aria-hidden="true"
-            className="absolute -top-6 -right-8 h-[220px] w-[220px] rotate-[18deg] text-sq-peach opacity-40"
+            className="absolute -top-6 -left-10 h-[160px] w-[160px] -rotate-[24deg] text-sq-peach opacity-30"
           />
-          <BrandLeaf
-            aria-hidden="true"
-            className="absolute -bottom-10 -left-10 h-[160px] w-[160px] -rotate-[24deg] text-sq-coral opacity-20"
-          />
+          <HeroLeafCluster className="hidden lg:block" />
           <Reveal className="relative z-10 flex flex-col items-center gap-5">
             <h1 className="max-w-[800px] font-heading text-[34px] leading-[42px] font-medium text-sq-ink sm:text-[44px] sm:leading-[52px] lg:text-[52px] lg:leading-[60px]">
               {hero.heading}
@@ -140,26 +139,26 @@ export default function ServicePageTemplate({ service }) {
             <h2 className={h2Cls}>{offerings.heading}</h2>
             <p className={subCls}>{offerings.sub}</p>
           </Reveal>
-          <div className="mt-6 grid w-full grid-cols-1 gap-7 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-6 grid w-full grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {offerings.cards.map((c, i) => (
               <Reveal
                 key={c.title}
                 delay={i * 80}
-                className="flex flex-col gap-3.5 text-left"
+                className="flex flex-col items-center gap-3.5 rounded-[24px] bg-white px-4 pt-4 pb-6 shadow-sm shadow-sq-plum/[0.03]"
               >
-                <div className="relative h-[200px] w-full overflow-hidden rounded-[22px]">
+                <div className="relative h-[190px] w-full overflow-hidden rounded-2xl">
                   <Image
                     src={c.img}
                     alt={c.title}
                     fill
-                    sizes="(max-width: 640px) 90vw, (max-width: 1024px) 45vw, 300px"
+                    sizes="(max-width: 640px) 90vw, (max-width: 1024px) 45vw, 280px"
                     className="object-cover"
                   />
                 </div>
-                <h3 className="text-[18px] font-semibold text-sq-ink">
+                <h3 className="font-heading text-[21px] font-medium text-sq-ink">
                   {c.title}
                 </h3>
-                <p className="text-[15px] leading-[24px] text-sq-muted">
+                <p className="text-[14px] leading-[22px] text-sq-muted">
                   {c.desc}
                 </p>
               </Reveal>
@@ -174,18 +173,21 @@ export default function ServicePageTemplate({ service }) {
             <h2 className={h2Cls}>{COMFORT.heading}</h2>
             <p className={subCls}>{COMFORT.sub}</p>
           </Reveal>
-          <div className="mt-4 grid w-full max-w-[900px] grid-cols-1 gap-6 md:grid-cols-2">
+          <div className="mt-4 flex w-full max-w-[760px] flex-col gap-4">
             {COMFORT.items.map((item) => (
               <Reveal
                 key={item.label}
-                className="flex flex-col gap-2 rounded-3xl border border-sq-line bg-white px-8 py-8 text-left"
+                className="flex items-start gap-3 rounded-[18px] border border-sq-line bg-white px-[26px] py-5 text-left"
               >
-                <span className="text-[17px] font-semibold text-sq-rose">
-                  {item.label}
-                </span>
-                <p className="text-[15px] leading-[24px] text-sq-muted">
-                  {item.desc}
-                </p>
+                <CircleCheck className="mt-[2px] h-5 w-5 shrink-0 text-sq-teal" />
+                <div className="flex flex-col gap-0.5">
+                  <span className="text-[15px] font-semibold text-sq-ink">
+                    {item.label}:
+                  </span>
+                  <p className="text-[15px] leading-[23px] text-sq-muted">
+                    {item.desc}
+                  </p>
+                </div>
               </Reveal>
             ))}
           </div>

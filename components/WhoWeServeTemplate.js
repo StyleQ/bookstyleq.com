@@ -1,10 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
-import { CircleX, Sparkles, ShieldCheck, Heart, ArrowRight } from "lucide-react";
+import { CircleX, Sparkles, ShieldCheck, Heart } from "lucide-react";
 import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
 import Reveal from "@/components/Reveal";
 import BrandLeaf from "@/components/BrandLeaf";
+import HeroLeafCluster from "@/components/HeroLeafCluster";
 import CtaBand from "@/components/CtaBand";
 import FaqAccordion from "@/components/FaqAccordion";
 import { PAD_X, Eyebrow, PrimaryButton, OutlineButton } from "@/components/ui";
@@ -38,12 +39,9 @@ export default function WhoWeServeTemplate({ audience }) {
         >
           <BrandLeaf
             aria-hidden="true"
-            className="absolute -top-6 -right-8 h-[220px] w-[220px] rotate-[18deg] text-sq-peach opacity-40"
+            className="absolute -top-6 -left-10 h-[160px] w-[160px] -rotate-[24deg] text-sq-peach opacity-30"
           />
-          <BrandLeaf
-            aria-hidden="true"
-            className="absolute -bottom-10 -left-10 h-[160px] w-[160px] -rotate-[24deg] text-sq-coral opacity-20"
-          />
+          <HeroLeafCluster className="hidden lg:block" />
           <Reveal className="relative z-10 flex flex-col items-center gap-5">
             <Eyebrow>WHO WE SERVE</Eyebrow>
             <h1 className="max-w-[820px] font-heading text-[34px] leading-[42px] font-medium text-sq-ink sm:text-[44px] sm:leading-[52px] lg:text-[52px] lg:leading-[60px]">
@@ -95,14 +93,14 @@ export default function WhoWeServeTemplate({ audience }) {
             <h2 className={h2Cls}>{whatWeDo.heading}</h2>
             <p className={subCls}>{whatWeDo.sub}</p>
           </Reveal>
-          <div className="mt-6 grid w-full grid-cols-1 gap-7 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-6 grid w-full grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {whatWeDo.cards.map((c, i) => (
               <Reveal
                 key={c.title}
                 delay={i * 80}
-                className="group flex flex-col gap-3.5 text-left"
+                className="flex flex-col items-center gap-3.5 rounded-[24px] bg-white px-4 pt-4 pb-6 shadow-sm shadow-sq-plum/[0.03]"
               >
-                <div className="relative h-[190px] w-full overflow-hidden rounded-[22px]">
+                <div className="relative h-[180px] w-full overflow-hidden rounded-2xl">
                   <Image
                     src={c.img}
                     alt={c.title}
@@ -111,18 +109,17 @@ export default function WhoWeServeTemplate({ audience }) {
                     className="object-cover"
                   />
                 </div>
-                <h3 className="text-[18px] font-semibold text-sq-ink">
+                <h3 className="font-heading text-[21px] font-medium text-sq-ink">
                   {c.title}
                 </h3>
-                <p className="text-[15px] leading-[24px] text-sq-muted">
+                <p className="text-[14px] leading-[22px] text-sq-muted">
                   {c.desc}
                 </p>
                 <Link
                   href={c.href}
-                  className="mt-auto inline-flex items-center gap-1.5 pt-1 text-[14px] font-semibold text-sq-rose transition-colors hover:text-sq-plum"
+                  className="mt-auto rounded-full border-[1.5px] border-sq-peach px-6 py-[9px] text-[14px] font-medium text-sq-ink transition-colors hover:border-sq-rose hover:text-sq-rose"
                 >
                   Learn More
-                  <ArrowRight className="h-3.5 w-3.5" />
                 </Link>
               </Reveal>
             ))}

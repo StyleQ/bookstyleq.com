@@ -13,6 +13,7 @@ import {
   CrossItem,
 } from "@/components/ui";
 import Footer from "@/components/Footer";
+import GetBrochureButton from "@/components/GetBrochureButton";
 import InkBloom from "@/components/InkBloom";
 import Marquee from "@/components/Marquee";
 import NavBar from "@/components/NavBar";
@@ -23,7 +24,6 @@ import Strands from "@/components/Strands";
 import Threads from "@/components/Threads";
 
 const BOOK_HREF = "/book-a-call";
-const BROCHURE_HREF = "/brochure.pdf";
 
 /* ---------- content data ---------- */
 
@@ -242,7 +242,7 @@ function Hero() {
             Book a Call
           </AnchorLink>
           <AnchorLink
-            href="/#how-it-works"
+            href="/#problem-section"
             className="rounded-full border-[1.5px] border-sq-peach px-8 py-4 text-center text-[16px] font-medium text-sq-ink transition-all duration-300 hover:border-sq-rose hover:text-sq-rose"
           >
             Learn More
@@ -286,6 +286,7 @@ function Partners() {
 function ProblemSection() {
   return (
     <section
+      id="problem-section"
       className={`relative flex flex-col justify-center overflow-hidden ${PAD_X} py-20 lg:py-36`}
     >
       {/* Darker-cream panel with a WebGL ink bloom on top, densest at the
@@ -653,13 +654,10 @@ function CtaBanner() {
           >
             Book a Call
           </AnchorLink>
-          <a
-            href={BROCHURE_HREF}
-            className="inline-flex items-center justify-center gap-2 rounded-full border-[1.5px] border-white/55 px-9 py-[18px] text-[15px] font-semibold text-white transition-all duration-300 hover:border-white"
-          >
+          <GetBrochureButton className="inline-flex items-center justify-center gap-2 rounded-full border-[1.5px] border-white/55 px-9 py-[18px] text-[15px] font-semibold text-white transition-all duration-300 hover:border-white">
             <Mail className="h-4 w-4" />
             Get our brochure
-          </a>
+          </GetBrochureButton>
         </div>
       </Reveal>
     </section>

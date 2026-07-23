@@ -59,7 +59,7 @@ function FaqItem({ q, a, open, onToggle, id }) {
         role="region"
         aria-labelledby={`${id}-button`}
         hidden={!open}
-        className="px-[26px] pb-5 text-[15px] leading-[24px] text-sq-muted"
+        className="px-[26px] pb-5 text-left text-[15px] leading-[24px] text-sq-muted"
       >
         {a}
       </div>

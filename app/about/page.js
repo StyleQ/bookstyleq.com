@@ -1,7 +1,7 @@
 import Image from "next/image";
-import Link from "next/link";
 import BrandLeaf from "@/components/BrandLeaf";
 import Footer from "@/components/Footer";
+import GetBrochureButton from "@/components/GetBrochureButton";
 import NavBar from "@/components/NavBar";
 
 export const metadata = {
@@ -131,12 +131,9 @@ export default function AboutPage() {
               pilot begins.
             </p>
           </div>
-          <Link
-            href="/#contact"
-            className="shrink-0 rounded-full bg-white px-7 py-3.5 text-[15px] font-semibold text-sq-plum shadow-sm transition-all duration-300 hover:shadow-lg hover:shadow-black/10"
-          >
+          <GetBrochureButton className="shrink-0 rounded-full bg-white px-7 py-3.5 text-[15px] font-semibold text-sq-plum shadow-sm transition-all duration-300 hover:shadow-lg hover:shadow-black/10">
             Get the Brochure
-          </Link>
+          </GetBrochureButton>
         </div>
       </section>
 
