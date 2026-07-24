@@ -32,6 +32,7 @@ const columns = [
   {
     title: "Company",
     items: [
+      { label: "Join our stylist network", href: "https://apply.bookstyleq.com/stylist" },
       { label: "Careers", href: "/#contact" },
       { label: "Partnerships", href: "/#contact" },
     ],
