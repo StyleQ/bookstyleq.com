@@ -5,6 +5,7 @@ The company-wide source of truth for anyone (or any tool) working on StyleQ — 
 ## Index
 
 - **[ICP: The Facility Buyer](./icp-facility-buyer.md)** — who we sell to, the buying committee, pain triggers, payment flow, negative filters, and per-domain implications. Start here.
+- **[Analytics & Measurement](./analytics.md)** — the three-tool measurement stack (Vercel Analytics, PostHog, Microsoft Clarity), what each provides, and every decision/trade-off behind it.
 - **Marketing brief** → [`../.agents/product-marketing.md`](../.agents/product-marketing.md) — the marketing interpretation of the ICP (voice, positioning, objections). Auto-loaded by the copywriting / marketing-psychology / seo-audit skills.
 
 ## How this is wired into the tooling
