@@ -1,4 +1,4 @@
-const siteUrl = "https://bookstyleq.com";
+const siteUrl = "https://www.bookstyleq.com";
 
 export default function robots() {
   return {

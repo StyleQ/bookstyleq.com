@@ -1,7 +1,7 @@
 import { serviceSlugs } from "@/lib/servicesData";
 import { audienceSlugs } from "@/lib/whoWeServeData";
 
-const siteUrl = "https://bookstyleq.com";
+const siteUrl = "https://www.bookstyleq.com";
 
 export default function sitemap() {
   return [

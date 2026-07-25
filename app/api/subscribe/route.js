@@ -11,7 +11,7 @@ const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 //   NEXT_PUBLIC_SITE_URL  optional — base URL used to build the brochure link
 const FROM = process.env.NEWSLETTER_FROM || "StyleQ <chantel@mail.bookstyleq.com>";
 const REPLY_TO = process.env.NEWSLETTER_REPLY_TO || "chantel@bookstyleq.com";
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://bookstyleq.com";
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://www.bookstyleq.com";
 const BROCHURE_URL = `${SITE_URL}/brochure.pdf`;
 
 export async function POST(request) {

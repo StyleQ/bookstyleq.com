@@ -14,7 +14,7 @@ const fraunces = Fraunces({
   style: ["normal", "italic"],
 });
 
-const siteUrl = "https://bookstyleq.com";
+const siteUrl = "https://www.bookstyleq.com";
 const siteDescription =
   "StyleQ partners with senior living communities to bring licensed, elder-care-trained stylists on-site. Spa-quality hair, nail, and grooming care, delivered with dignity.";
 
