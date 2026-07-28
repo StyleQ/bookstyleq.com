@@ -4,9 +4,11 @@ import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { X, Mail, CircleCheck, Clock } from "lucide-react";
 import BrandLeaf from "@/components/BrandLeaf";
+import Turnstile from "@/components/Turnstile";
 import posthog from "posthog-js";
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const TURNSTILE_SITE_KEY = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
 
 const BULLETS = [
   "The services and what a salon day looks like",
@@ -39,6 +41,9 @@ export default function BrochureModal({ onClose }) {
   const [message, setMessage] = useState("");
   const [sentTo, setSentTo] = useState("");
   const [mounted, setMounted] = useState(false);
+  const [honeypot, setHoneypot] = useState("");
+  const [turnstileToken, setTurnstileToken] = useState("");
+  const [turnstileReset, setTurnstileReset] = useState(0);
   const inputRef = useRef(null);
 
   useEffect(() => setMounted(true), []);
@@ -66,23 +71,42 @@ export default function BrochureModal({ onClose }) {
       setMessage("Please enter a valid email address.");
       return;
     }
+    if (TURNSTILE_SITE_KEY && !turnstileToken) {
+      setStatus("error");
+      setMessage("Please complete the verification check below.");
+      return;
+    }
     setStatus("submitting");
     setMessage("");
     try {
       const res = await fetch("/api/subscribe", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email: trimmed }),
+        body: JSON.stringify({
+          email: trimmed,
+          website: honeypot,
+          turnstileToken,
+        }),
       });
-      if (!res.ok) throw new Error("Request failed");
+      if (!res.ok) {
+        const data = await res.json().catch(() => null);
+        const err = new Error(data?.error || "Request failed");
+        err.fromServer = !!data?.error;
+        throw err;
+      }
       posthog.identify(trimmed);
       posthog.capture("brochure_requested", { source: "modal" });
       setSentTo(trimmed);
       setStatus("success");
-    } catch {
+    } catch (err) {
+      // Turnstile tokens are single-use; get a fresh one for the retry.
+      setTurnstileToken("");
+      setTurnstileReset((n) => n + 1);
       setStatus("error");
       setMessage(
-        "Something went wrong. Please try again, or email hello@bookstyleq.com.",
+        err?.fromServer
+          ? err.message
+          : "Something went wrong. Please try again, or email hello@bookstyleq.com.",
       );
     }
   }
@@ -175,6 +199,24 @@ export default function BrochureModal({ onClose }) {
                 ))}
               </div>
               <form onSubmit={handleSubmit} noValidate className="flex flex-col gap-2 pt-2">
+                {/* Honeypot: invisible to humans, tempting to form-filling bots.
+                    The server fakes success when it arrives filled. */}
+                <div
+                  aria-hidden="true"
+                  className="absolute -left-[9999px] h-0 overflow-hidden"
+                >
+                  <label>
+                    Website
+                    <input
+                      type="text"
+                      name="website"
+                      tabIndex={-1}
+                      autoComplete="off"
+                      value={honeypot}
+                      onChange={(e) => setHoneypot(e.target.value)}
+                    />
+                  </label>
+                </div>
                 <span className="text-[13px] font-semibold text-sq-ink">
                   Work email
                 </span>
@@ -197,6 +239,14 @@ export default function BrochureModal({ onClose }) {
                     {status === "submitting" ? "Sending..." : "Send it to me"}
                   </button>
                 </div>
+                {TURNSTILE_SITE_KEY && (
+                  <Turnstile
+                    siteKey={TURNSTILE_SITE_KEY}
+                    onToken={setTurnstileToken}
+                    resetSignal={turnstileReset}
+                    className="min-h-[65px]"
+                  />
+                )}
                 {status === "error" && (
                   <p role="alert" className="text-[13px] text-sq-coral">
                     {message}

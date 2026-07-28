@@ -1,14 +1,19 @@
 "use client";
 
 import { useState } from "react";
+import Turnstile from "@/components/Turnstile";
 import posthog from "posthog-js";
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const TURNSTILE_SITE_KEY = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
 
 export default function NewsletterForm() {
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState("idle"); // idle | submitting | success | error
   const [message, setMessage] = useState("");
+  const [honeypot, setHoneypot] = useState("");
+  const [turnstileToken, setTurnstileToken] = useState("");
+  const [turnstileReset, setTurnstileReset] = useState(0);
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -20,6 +25,11 @@ export default function NewsletterForm() {
       setMessage("Please enter a valid email address.");
       return;
     }
+    if (TURNSTILE_SITE_KEY && !turnstileToken) {
+      setStatus("error");
+      setMessage("Please complete the verification check below.");
+      return;
+    }
 
     setStatus("submitting");
     setMessage("");
@@ -28,18 +38,32 @@ export default function NewsletterForm() {
       const res = await fetch("/api/subscribe", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email: trimmed }),
+        body: JSON.stringify({
+          email: trimmed,
+          website: honeypot,
+          turnstileToken,
+        }),
       });
-      if (!res.ok) throw new Error("Request failed");
+      if (!res.ok) {
+        const data = await res.json().catch(() => null);
+        const err = new Error(data?.error || "Request failed");
+        err.fromServer = !!data?.error;
+        throw err;
+      }
       posthog.identify(trimmed);
       posthog.capture("newsletter_subscribed", { source: "footer" });
       setStatus("success");
       setMessage("You’re on the list. Your brochure is on its way to your inbox.");
       setEmail("");
-    } catch {
+    } catch (err) {
+      // Turnstile tokens are single-use; get a fresh one for the retry.
+      setTurnstileToken("");
+      setTurnstileReset((n) => n + 1);
       setStatus("error");
       setMessage(
-        "Something went wrong. Please try again, or email chantel@bookstyleq.com.",
+        err?.fromServer
+          ? err.message
+          : "Something went wrong. Please try again, or email chantel@bookstyleq.com.",
       );
     }
   }
@@ -61,6 +85,21 @@ export default function NewsletterForm() {
       noValidate
       className="relative flex w-full max-w-[520px] flex-col items-center gap-2.5"
     >
+      {/* Honeypot: invisible to humans, tempting to form-filling bots.
+          The server fakes success when it arrives filled. */}
+      <div aria-hidden="true" className="absolute -left-[9999px] h-0 overflow-hidden">
+        <label>
+          Website
+          <input
+            type="text"
+            name="website"
+            tabIndex={-1}
+            autoComplete="off"
+            value={honeypot}
+            onChange={(e) => setHoneypot(e.target.value)}
+          />
+        </label>
+      </div>
       <div className="flex w-full flex-col items-stretch gap-3 sm:flex-row">
         <label htmlFor="newsletter-email" className="sr-only">
           Work email address
@@ -88,6 +127,14 @@ export default function NewsletterForm() {
           {status === "submitting" ? "Sending…" : "Send me the brochure"}
         </button>
       </div>
+      {TURNSTILE_SITE_KEY && (
+        <Turnstile
+          siteKey={TURNSTILE_SITE_KEY}
+          onToken={setTurnstileToken}
+          resetSignal={turnstileReset}
+          className="min-h-[65px]"
+        />
+      )}
       <p
         aria-live="polite"
         className={`min-h-[18px] text-[13px] ${

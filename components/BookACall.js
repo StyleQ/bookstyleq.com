@@ -4,10 +4,12 @@ import { useState } from "react";
 import Link from "next/link";
 import { Check, Mail, Phone } from "lucide-react";
 import { PAD_X, Eyebrow } from "@/components/ui";
+import Turnstile from "@/components/Turnstile";
 import posthog from "posthog-js";
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const TIMES = ["Morning", "Afternoon", "Evening"];
+const TURNSTILE_SITE_KEY = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
 
 const STEPS = [
   "We reach out to find a time that works for you.",
@@ -39,6 +41,9 @@ export default function BookACall() {
   const [status, setStatus] = useState("idle"); // idle | submitting | error
   const [message, setMessage] = useState("");
   const [submittedName, setSubmittedName] = useState("");
+  const [honeypot, setHoneypot] = useState("");
+  const [turnstileToken, setTurnstileToken] = useState("");
+  const [turnstileReset, setTurnstileReset] = useState(0);
 
   const update = (key) => (e) =>
     setForm((f) => ({ ...f, [key]: e.target.value }));
@@ -59,6 +64,11 @@ export default function BookACall() {
       setMessage("Please enter a valid work email.");
       return;
     }
+    if (TURNSTILE_SITE_KEY && !turnstileToken) {
+      setStatus("error");
+      setMessage("Please complete the verification check below.");
+      return;
+    }
 
     setStatus("submitting");
     setMessage("");
@@ -72,9 +82,20 @@ export default function BookACall() {
       const res = await fetch("/api/book-a-call", {
         method: "POST",
         headers,
-        body: JSON.stringify({ ...form, name, email }),
+        body: JSON.stringify({
+          ...form,
+          name,
+          email,
+          website: honeypot,
+          turnstileToken,
+        }),
       });
-      if (!res.ok) throw new Error("Request failed");
+      if (!res.ok) {
+        const data = await res.json().catch(() => null);
+        const err = new Error(data?.error || "Request failed");
+        err.fromServer = !!data?.error;
+        throw err;
+      }
       posthog.identify(email, { name, facility: form.facility || undefined });
       posthog.capture("book_a_call_submitted", {
         has_phone: !!form.phone.trim(),
@@ -83,10 +104,15 @@ export default function BookACall() {
       });
       setSubmittedName(name.split(" ")[0]);
       setStatus("success");
-    } catch {
+    } catch (err) {
+      // Turnstile tokens are single-use; get a fresh one for the retry.
+      setTurnstileToken("");
+      setTurnstileReset((n) => n + 1);
       setStatus("error");
       setMessage(
-        "Something went wrong. Please try again, or reach us directly at (414) 206-1690.",
+        err?.fromServer
+          ? err.message
+          : "Something went wrong. Please try again, or reach us directly at (414) 206-1690.",
       );
     }
   }
@@ -197,6 +223,22 @@ export default function BookACall() {
               </p>
             </div>
 
+            {/* Honeypot: invisible to humans, tempting to form-filling bots.
+                The server fakes success when it arrives filled. */}
+            <div aria-hidden="true" className="absolute -left-[9999px] h-0 overflow-hidden">
+              <label>
+                Website
+                <input
+                  type="text"
+                  name="website"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  value={honeypot}
+                  onChange={(e) => setHoneypot(e.target.value)}
+                />
+              </label>
+            </div>
+
             <Field label="Full name">
               <input
                 type="text"
@@ -268,6 +310,15 @@ export default function BookACall() {
                 })}
               </div>
             </div>
+
+            {TURNSTILE_SITE_KEY && (
+              <Turnstile
+                siteKey={TURNSTILE_SITE_KEY}
+                onToken={setTurnstileToken}
+                resetSignal={turnstileReset}
+                className="min-h-[65px]"
+              />
+            )}
 
             {status === "error" && (
               <p role="alert" className="text-[14px] text-sq-coral">

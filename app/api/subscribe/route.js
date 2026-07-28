@@ -1,14 +1,25 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
 import { getPostHogClient } from "@/lib/posthog-server";
+import {
+  clientIp,
+  createRateLimiter,
+  reportBlocked,
+  verifyTurnstile,
+} from "@/lib/bot-protection";
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+// Stricter than book-a-call: this endpoint emails an arbitrary address, so
+// abuse burns our Resend sending reputation, not just Chantel's inbox.
+const rateLimited = createRateLimiter({ windowMs: 10 * 60 * 1000, max: 3 });
 
 // Configurable via environment variables (see .env.example):
 //   RESEND_API_KEY        required — your Resend API key
 //   NEWSLETTER_FROM       optional — verified sender, e.g. "StyleQ <hello@bookstyleq.com>"
 //   NEWSLETTER_REPLY_TO   optional — where replies land (defaults to chantel@bookstyleq.com)
 //   NEXT_PUBLIC_SITE_URL  optional — base URL used to build the brochure link
+//   TURNSTILE_SECRET_KEY  optional — enables Cloudflare Turnstile verification
 const FROM = process.env.NEWSLETTER_FROM || "StyleQ <chantel@mail.bookstyleq.com>";
 const REPLY_TO = process.env.NEWSLETTER_REPLY_TO || "chantel@bookstyleq.com";
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://www.bookstyleq.com";
@@ -24,9 +35,19 @@ export async function POST(request) {
     );
   }
 
-  let email;
+  const ip = clientIp(request);
+  if (rateLimited(ip)) {
+    console.warn("[subscribe] rate limited:", ip);
+    await reportBlocked("subscribe", "rate_limit", ip);
+    return NextResponse.json(
+      { ok: false, error: "Too many requests. Please try again later." },
+      { status: 429 },
+    );
+  }
+
+  let body;
   try {
-    ({ email } = await request.json());
+    body = await request.json();
   } catch {
     return NextResponse.json(
       { ok: false, error: "Invalid request." },
@@ -34,7 +55,30 @@ export async function POST(request) {
     );
   }
 
-  email = typeof email === "string" ? email.trim() : "";
+  // Honeypot: a hidden "website" field humans never see. If it's filled,
+  // return a fake success so bots don't learn they were caught.
+  if (typeof body.website === "string" && body.website.trim()) {
+    console.warn("[subscribe] honeypot tripped:", ip);
+    await reportBlocked("subscribe", "honeypot", ip);
+    return NextResponse.json({ ok: true });
+  }
+
+  const turnstileToken =
+    typeof body.turnstileToken === "string"
+      ? body.turnstileToken.slice(0, 3000)
+      : "";
+  if (!(await verifyTurnstile(turnstileToken, ip, "subscribe"))) {
+    await reportBlocked("subscribe", "turnstile", ip);
+    return NextResponse.json(
+      {
+        ok: false,
+        error: "Human verification failed. Please refresh and try again.",
+      },
+      { status: 403 },
+    );
+  }
+
+  const email = typeof body.email === "string" ? body.email.trim() : "";
   if (!EMAIL_RE.test(email)) {
     return NextResponse.json(
       { ok: false, error: "Please provide a valid email address." },

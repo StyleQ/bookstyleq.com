@@ -1,15 +1,24 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
 import { getPostHogClient } from "@/lib/posthog-server";
+import {
+  clientIp,
+  createRateLimiter,
+  reportBlocked,
+  verifyTurnstile,
+} from "@/lib/bot-protection";
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 // Configurable via environment variables (see .env.example):
-//   RESEND_API_KEY   required — your Resend API key
-//   BOOKING_FROM     optional — verified sender
-//   BOOKING_TO       optional — where booking requests land
+//   RESEND_API_KEY        required — your Resend API key
+//   BOOKING_FROM          optional — verified sender
+//   BOOKING_TO            optional — where booking requests land
+//   TURNSTILE_SECRET_KEY  optional — enables Cloudflare Turnstile verification
 const FROM = process.env.BOOKING_FROM || "StyleQ <chantel@mail.bookstyleq.com>";
 const TO = process.env.BOOKING_TO || "chantel@bookstyleq.com";
+
+const rateLimited = createRateLimiter({ windowMs: 10 * 60 * 1000, max: 5 });
 
 function clean(v, max = 200) {
   return (typeof v === "string" ? v.trim() : "").slice(0, max);
@@ -32,6 +41,16 @@ export async function POST(request) {
     );
   }
 
+  const ip = clientIp(request);
+  if (rateLimited(ip)) {
+    console.warn("[book-a-call] rate limited:", ip);
+    await reportBlocked("book-a-call", "rate_limit", ip);
+    return NextResponse.json(
+      { ok: false, error: "Too many requests. Please try again later." },
+      { status: 429 },
+    );
+  }
+
   let body;
   try {
     body = await request.json();
@@ -39,6 +58,25 @@ export async function POST(request) {
     return NextResponse.json(
       { ok: false, error: "Invalid request." },
       { status: 400 },
+    );
+  }
+
+  // Honeypot: a hidden "website" field humans never see. If it's filled,
+  // return a fake success so bots don't learn they were caught.
+  if (clean(body.website)) {
+    console.warn("[book-a-call] honeypot tripped:", ip);
+    await reportBlocked("book-a-call", "honeypot", ip);
+    return NextResponse.json({ ok: true });
+  }
+
+  if (!(await verifyTurnstile(clean(body.turnstileToken, 3000), ip, "book-a-call"))) {
+    await reportBlocked("book-a-call", "turnstile", ip);
+    return NextResponse.json(
+      {
+        ok: false,
+        error: "Human verification failed. Please refresh and try again.",
+      },
+      { status: 403 },
     );
   }
 
