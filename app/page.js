@@ -66,7 +66,7 @@ const features = [
     reverse: true,
     image: "/images/generated-1784746115985.png",
     alt: "A resident smiling after a StyleQ salon visit",
-    heading: "We make radiant residents the easiest part of your calendar",
+    heading: "We make salon day the easiest part of your calendar",
     para: "No rushing, no assembly line. Just someone who actually listens to what a resident wants, and takes the time to get it right.",
     checks: [
       "Services built around what residents want",
@@ -104,7 +104,7 @@ const steps = [
   {
     num: "02",
     title: "We arrive with everything",
-    desc: "Chairs, warm towels, gentle products, and friendly stylists. No setup needed from your staff.",
+    desc: "Beauty tools, warm towels, gentle products, and friendly stylists. No setup needed from your staff.",
   },
   {
     num: "03",

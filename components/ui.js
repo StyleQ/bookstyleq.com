@@ -9,7 +9,7 @@ export function EyebrowLeaf({ children, className = "text-sq-coral" }) {
   return (
     <div className="flex items-center gap-2.5">
       <BrandLeaf className={`h-4 w-4 ${className}`} />
-      <span className="text-[13px] font-semibold tracking-[2.4px] text-sq-rose">
+      <span className="text-[18px] font-semibold tracking-[2.4px] text-sq-rose">
         {children}
       </span>
     </div>
