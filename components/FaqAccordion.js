@@ -49,7 +49,7 @@ function FaqItem({ q, a, open, onToggle, id }) {
           {q}
         </span>
         <ChevronDown
-          className={`h-[18px] w-[18px] shrink-0 text-sq-muted transition-transform duration-300 ${
+          className={`h-[18px] w-[18px] shrink-0 text-sq-muted transition-transform duration-300 motion-reduce:transition-none ${
             open ? "-rotate-180" : ""
           }`}
         />
@@ -58,10 +58,20 @@ function FaqItem({ q, a, open, onToggle, id }) {
         id={`${id}-panel`}
         role="region"
         aria-labelledby={`${id}-button`}
-        hidden={!open}
-        className="px-[26px] pb-5 text-left text-[15px] leading-[24px] text-sq-muted"
+        inert={!open}
+        className={`grid transition-[grid-template-rows] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none ${
+          open ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
+        }`}
       >
-        {a}
+        <div className="min-h-0 overflow-hidden">
+          <div
+            className={`px-[26px] pb-5 text-left text-[15px] leading-[24px] text-sq-muted transition-opacity duration-300 motion-reduce:transition-none ${
+              open ? "opacity-100" : "opacity-0"
+            }`}
+          >
+            {a}
+          </div>
+        </div>
       </div>
     </div>
   );
