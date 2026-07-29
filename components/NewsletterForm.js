@@ -27,7 +27,7 @@ export default function NewsletterForm() {
     }
     if (TURNSTILE_SITE_KEY && !turnstileToken) {
       setStatus("error");
-      setMessage("Please complete the verification check below.");
+      setMessage("Please complete the verification check above.");
       return;
     }
 
