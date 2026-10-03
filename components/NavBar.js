@@ -80,6 +80,7 @@ export default function NavBar() {
       >
         <Image
           src="/images/styleq-logo.png"
+          loading="eager"
           alt="StyleQ"
           width={500}
           height={165}
@@ -138,6 +139,12 @@ export default function NavBar() {
           Meet our Stylists
         </AnchorLink>
         <AnchorLink
+          href="/blog"
+          className="text-[15px] text-sq-ink transition-colors hover:text-sq-rose"
+        >
+          Blog
+        </AnchorLink>
+        <AnchorLink
           href="/book-a-call"
           className="rounded-full bg-sq-rose px-[22px] py-[10px] text-[14px] font-medium text-white shadow-sm transition-all duration-300 hover:bg-sq-rose/90 hover:shadow-md hover:shadow-sq-rose/25"
         >
@@ -182,6 +189,13 @@ export default function NavBar() {
             className="rounded-xl px-3 py-3 text-[16px] text-sq-ink transition-colors hover:bg-sq-peach-soft"
           >
             Meet our Stylists
+          </AnchorLink>
+          <AnchorLink
+            href="/blog"
+            onClick={close}
+            className="rounded-xl px-3 py-3 text-[16px] text-sq-ink transition-colors hover:bg-sq-peach-soft"
+          >
+            Blog
           </AnchorLink>
           <AnchorLink
             href="/book-a-call"

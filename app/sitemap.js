@@ -1,5 +1,6 @@
 import { serviceSlugs } from "@/lib/servicesData";
 import { audienceSlugs } from "@/lib/whoWeServeData";
+import { getPostSlugs } from "@/lib/blog";
 
 const siteUrl = "https://www.bookstyleq.com";
 
@@ -30,6 +31,16 @@ export default function sitemap() {
       changeFrequency: "monthly",
       priority: 0.7,
     },
+    {
+      url: `${siteUrl}/blog`,
+      changeFrequency: "weekly",
+      priority: 0.6,
+    },
+    ...getPostSlugs().map((slug) => ({
+      url: `${siteUrl}/blog/${slug}`,
+      changeFrequency: "monthly",
+      priority: 0.5,
+    })),
     {
       url: `${siteUrl}/stylist-code-of-conduct`,
       changeFrequency: "yearly",

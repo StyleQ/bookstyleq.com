@@ -25,7 +25,7 @@ const columns = [
   {
     title: "Resources",
     items: [
-      { label: "Blog", href: "/#faq" },
+      { label: "Blog", href: "/blog" },
       { label: "Guides", href: "/#faq" },
     ],
   },
@@ -73,6 +73,7 @@ export default function Footer() {
         <div className="flex max-w-[400px] flex-col items-start gap-[18px]">
           <Image
             src="/images/styleq-logo.png"
+            loading="eager"
             alt="StyleQ"
             width={500}
             height={165}

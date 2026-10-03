@@ -35,6 +35,119 @@ body {
   }
 }
 
+/* Markdown blog body (lib/blog.js parses content/blog/*.md to this HTML via
+   `marked`), styled directly since it isn't authored as JSX. */
+.blog-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+.blog-content h2 {
+  font-family: var(--font-heading);
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: 500;
+  color: var(--color-sq-ink);
+}
+
+.blog-content p {
+  font-size: 17px;
+  line-height: 28px;
+  color: var(--color-sq-muted);
+}
+
+.blog-content strong {
+  font-weight: 600;
+  color: var(--color-sq-ink);
+}
+
+.blog-content a {
+  color: var(--color-sq-rose);
+  text-underline-offset: 2px;
+}
+
+.blog-content blockquote {
+  border-left: 3px solid var(--color-sq-rose);
+  padding-left: 1.5rem;
+  font-family: var(--font-heading);
+  font-style: italic;
+  font-size: 20px;
+  line-height: 30px;
+  color: var(--color-sq-ink);
+}
+
+.blog-content img {
+  display: block;
+  width: 100%;
+  border-radius: 20px;
+  margin-top: 6px;
+  margin-bottom: 6px;
+}
+
+/* An image alone in its own paragraph (standard markdown figure pattern)
+   followed by a paragraph containing only an em renders as a caption. */
+.blog-content p:has(> img:only-child) {
+  margin: 0;
+}
+
+.blog-content p:has(> img:only-child) + p > em:only-child {
+  display: block;
+  margin-top: -1rem;
+  text-align: center;
+  font-size: 14px;
+  font-style: normal;
+  color: var(--color-sq-muted);
+}
+
+.blog-content ul {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  list-style: none;
+  border: 1px solid var(--color-sq-line);
+  border-radius: 20px;
+  background: #fff;
+  padding: 1.5rem 1.75rem;
+}
+
+.blog-content ul li {
+  position: relative;
+  padding-left: 1.75rem;
+  font-size: 15px;
+  line-height: 23px;
+  font-weight: 500;
+  color: var(--color-sq-ink);
+}
+
+.blog-content ul li::before {
+  content: "✓";
+  position: absolute;
+  top: 2px;
+  left: 0;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--color-sq-rose);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 18px;
+  text-align: center;
+}
+
+@media (min-width: 640px) {
+  .blog-content h2 {
+    font-size: 28px;
+    line-height: 36px;
+  }
+
+  .blog-content blockquote {
+    font-size: 22px;
+    line-height: 32px;
+  }
+}
+
 @media (prefers-reduced-motion: no-preference) {
   html {
     scroll-behavior: smooth;

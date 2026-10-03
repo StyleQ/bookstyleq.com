@@ -11,8 +11,10 @@
   },
   "dependencies": {
     "@vercel/analytics": "^2.0.1",
+    "gray-matter": "^4.0.3",
     "lenis": "^1.3.25",
     "lucide-react": "^1.23.0",
+    "marked": "^18.0.14",
     "next": "16.2.10",
     "ogl": "^1.0.11",
     "posthog-js": "^1.407.0",

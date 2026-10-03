@@ -511,6 +511,7 @@ function Difference() {
           <div className="relative z-10 flex flex-col gap-[18px]">
             <Image
               src="/images/styleq-logo.png"
+              loading="eager"
               alt="StyleQ"
               width={500}
               height={165}
