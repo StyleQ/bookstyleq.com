@@ -29,15 +29,17 @@ function PostCard({ post, delay }) {
         href={`/blog/${post.slug}`}
         className="group flex h-full flex-col overflow-hidden rounded-[24px] bg-white shadow-sm shadow-sq-plum/[0.03] transition-shadow duration-300 hover:shadow-lg hover:shadow-sq-plum/[0.08]"
       >
-        <div className="relative h-[220px] w-full overflow-hidden">
-          <Image
-            src={post.coverImage}
-            alt={post.coverAlt}
-            fill
-            sizes="(max-width: 640px) 90vw, (max-width: 1024px) 45vw, 380px"
-            className="object-cover transition-transform duration-500 group-hover:scale-105"
-          />
-        </div>
+        {post.coverImage && (
+          <div className="relative h-55 w-full overflow-hidden">
+            <Image
+              src={post.coverImage}
+              alt={post.coverAlt}
+              fill
+              sizes="(max-width: 640px) 90vw, (max-width: 1024px) 45vw, 380px"
+              className="object-cover transition-transform duration-500 group-hover:scale-105"
+            />
+          </div>
+        )}
         <div className="flex flex-1 flex-col gap-3 px-7 py-7 text-left">
           <span className="text-[13px] font-semibold tracking-[1.5px] text-sq-rose">
             {post.category.toUpperCase()}
@@ -85,7 +87,7 @@ export default function BlogIndexPage() {
 
         {/* Post grid */}
         <section className={`border-t border-sq-line ${PAD_X} py-16 lg:py-20`}>
-          <div className="grid grid-cols-1 gap-7 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid grid-cols-1 gap-7 md:grid-cols-2 xl:grid-cols-3">
             {posts.map((post, i) => (
               <PostCard key={post.slug} post={post} delay={i * 80} />
             ))}

@@ -78,24 +78,28 @@ export default function BlogPostTemplate({ post }) {
         </section>
 
         {/* Cover image */}
-        <section className={`border-t border-sq-line ${PAD_X} py-4 lg:py-8`}>
-          <Reveal>
-            <div className="relative mx-auto h-60 w-full max-w-250 overflow-hidden rounded-[28px] sm:h-110 lg:h-130">
-              <Image
-                src={coverImage}
-                alt={coverAlt}
-                fill
-                priority
-                sizes="(max-width: 1024px) 100vw, 1000px"
-                className="object-cover"
-              />
-            </div>
-          </Reveal>
-        </section>
+        {
+          coverImage && (
+            <section className={`border-t border-sq-line ${PAD_X} py-4 lg:py-8`}>
+              <Reveal>
+                <div className="relative mx-auto h-60 w-full max-w-250 overflow-hidden rounded-[28px] sm:h-110 lg:h-130">
+                  <Image
+                    src={coverImage}
+                    alt={coverAlt}
+                    fill
+                    priority
+                    sizes="(max-width: 1024px) 100vw, 1000px"
+                    className="object-cover"
+                  />
+                </div>
+              </Reveal>
+            </section>
+          )
+        }
 
         {/* Body */}
         <article className={`${PAD_X} pt-4 lg:pt-8 pb-8 lg:pb-16`}>
-          <Reveal
+          <div
             className="blog-content mx-auto max-w-170"
             dangerouslySetInnerHTML={{ __html: contentHtml }}
           />
