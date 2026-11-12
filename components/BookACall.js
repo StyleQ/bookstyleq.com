@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Check, Mail, Phone } from "lucide-react";
 import { PAD_X, Eyebrow } from "@/components/ui";
 import Turnstile from "@/components/Turnstile";
+import DatePicker, { formatLong } from "@/components/DatePicker";
 import posthog from "posthog-js";
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -37,10 +38,12 @@ export default function BookACall() {
     email: "",
     phone: "",
     bestTime: "",
+    preferredDate: "",
   });
   const [status, setStatus] = useState("idle"); // idle | submitting | error
   const [message, setMessage] = useState("");
   const [submittedName, setSubmittedName] = useState("");
+  const [submittedDate, setSubmittedDate] = useState("");
   const [honeypot, setHoneypot] = useState("");
   const [turnstileToken, setTurnstileToken] = useState("");
   const [turnstileReset, setTurnstileReset] = useState(0);
@@ -101,8 +104,10 @@ export default function BookACall() {
         has_phone: !!form.phone.trim(),
         has_facility: !!form.facility.trim(),
         best_time: form.bestTime || null,
+        has_preferred_date: !!form.preferredDate,
       });
       setSubmittedName(name.split(" ")[0]);
+      setSubmittedDate(form.preferredDate);
       setStatus("success");
     } catch (err) {
       // Turnstile tokens are single-use; get a fresh one for the retry.
@@ -186,9 +191,11 @@ export default function BookACall() {
               You&apos;re on the calendar, almost
             </h2>
             <p className="max-w-[380px] text-[15px] leading-[24px] text-sq-muted">
-              Thanks, {submittedName}. A StyleQ coordinator will reach out during
-              your preferred window to lock in a quick, no-pressure call about
-              your community.
+              Thanks, {submittedName}. A StyleQ coordinator will reach out
+              {submittedDate
+                ? ` to confirm ${formatLong(submittedDate)}`
+                : " during your preferred window"}{" "}
+              and lock in a quick, no-pressure call about your community.
             </p>
             <span className="rounded-full bg-sq-cream px-4 py-1.5 text-[13px] font-medium text-sq-muted">
               Typically within one business day
@@ -281,6 +288,17 @@ export default function BookACall() {
                 className={inputCls}
               />
             </Field>
+
+            <div className="flex flex-col gap-1.5">
+              <span className={labelCls}>
+                Preferred day{" "}
+                <span className="font-normal text-sq-muted">(optional)</span>
+              </span>
+              <DatePicker
+                value={form.preferredDate}
+                onChange={(d) => setForm((f) => ({ ...f, preferredDate: d }))}
+              />
+            </div>
 
             <div className="flex flex-col gap-1.5">
               <span className={labelCls}>Best time to reach you</span>

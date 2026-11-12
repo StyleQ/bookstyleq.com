@@ -86,6 +86,32 @@ export async function POST(request) {
   const phone = clean(body.phone, 40);
   const bestTime = clean(body.bestTime, 20);
 
+  // Optional preferred day: must be a real YYYY-MM-DD calendar date.
+  let preferredDate = "";
+  const rawDate = clean(body.preferredDate, 10);
+  if (rawDate) {
+    const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(rawDate);
+    const d = m && new Date(Date.UTC(+m[1], +m[2] - 1, +m[3]));
+    if (
+      !d ||
+      d.getUTCFullYear() !== +m[1] ||
+      d.getUTCMonth() !== +m[2] - 1 ||
+      d.getUTCDate() !== +m[3]
+    ) {
+      return NextResponse.json(
+        { ok: false, error: "Please choose a valid date." },
+        { status: 422 },
+      );
+    }
+    preferredDate = d.toLocaleDateString("en-US", {
+      weekday: "long",
+      month: "long",
+      day: "numeric",
+      year: "numeric",
+      timeZone: "UTC",
+    });
+  }
+
   if (!name) {
     return NextResponse.json(
       { ok: false, error: "Name is required." },
@@ -104,6 +130,7 @@ export async function POST(request) {
     ["Community / facility", facility || "—"],
     ["Email", email],
     ["Phone", phone || "—"],
+    ["Preferred day", preferredDate || "—"],
     ["Best time to reach", bestTime || "—"],
   ];
 
@@ -156,6 +183,7 @@ ${rows
         has_phone: !!phone,
         has_facility: !!facility,
         best_time: bestTime || null,
+        has_preferred_date: !!preferredDate,
         $session_id: request.headers.get("X-POSTHOG-SESSION-ID") || undefined,
       },
     });
