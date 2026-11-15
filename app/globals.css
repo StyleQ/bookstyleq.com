@@ -17,6 +17,13 @@
   --color-sq-ink: #3b3240;
   --color-sq-muted: #7c7382;
   --color-sq-line: #f0e7db;
+  --color-sq-ink-soft: #5c5362;
+  --color-sq-green: #3f7d5e;
+  --color-sq-green-soft: #e6f1ea;
+  --color-sq-plum-soft: #efe8f4;
+  --color-sq-teal-soft: #e2efef;
+  --color-sq-rose-soft: #fae7ef;
+  --color-sq-amber: #a8712a;
 }
 
 body {
