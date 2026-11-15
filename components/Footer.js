@@ -26,7 +26,7 @@ const columns = [
     title: "Resources",
     items: [
       { label: "Blog", href: "/blog" },
-      { label: "Guides", href: "/#faq" },
+      { label: "Guides", href: "/resources" },
     ],
   },
   {
